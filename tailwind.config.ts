@@ -61,7 +61,32 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				learning: {
+					primary: 'hsl(var(--learning-primary))',
+					'primary-dark': 'hsl(var(--learning-primary-dark))',
+					secondary: 'hsl(var(--learning-secondary))',
+					accent: 'hsl(var(--learning-accent))',
+					success: 'hsl(var(--learning-success))',
+					warning: 'hsl(var(--learning-warning))',
+					surface: 'hsl(var(--learning-surface))',
+					'surface-elevated': 'hsl(var(--learning-surface-elevated))',
 				}
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-success': 'var(--gradient-success)',
+				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-surface': 'var(--gradient-surface)',
+			},
+			boxShadow: {
+				'card': 'var(--shadow-card)',
+				'elevated': 'var(--shadow-elevated)',
+				'button': 'var(--shadow-button)',
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)',
+				'bounce': 'var(--transition-bounce)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

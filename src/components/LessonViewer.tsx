@@ -1,0 +1,242 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { ArrowLeft, ArrowRight, BookOpen, Clock, Play } from "lucide-react";
+
+interface LearningSession {
+  topic: string;
+  level: "beginner" | "intermediate" | "expert";
+  currentLesson: number;
+  totalLessons: number;
+  score: number;
+  streak: number;
+}
+
+interface LessonViewerProps {
+  session: LearningSession;
+  onStartQuiz: () => void;
+  onBackToDashboard: () => void;
+}
+
+export function LessonViewer({ session, onStartQuiz, onBackToDashboard }: LessonViewerProps) {
+  const mockLessons = {
+    "React Fundamentals": {
+      title: "Understanding JSX and Components",
+      content: `
+# Understanding JSX and Components
+
+JSX (JavaScript XML) is a syntax extension for JavaScript that lets you write HTML-like code in your React components. It's one of the core concepts that makes React so powerful and intuitive.
+
+## What is JSX?
+
+JSX allows you to describe what your UI should look like by combining JavaScript with HTML-like syntax. Here's a simple example:
+
+\`\`\`jsx
+const Welcome = () => {
+  return <h1>Hello, World!</h1>;
+};
+\`\`\`
+
+## Key Concepts:
+
+1. **Components are Functions**: In modern React, components are just JavaScript functions that return JSX
+2. **Props**: Components can receive data through props (properties)
+3. **State**: Components can manage their own internal state
+4. **Virtual DOM**: React uses a virtual representation of the DOM for efficient updates
+
+## Best Practices:
+
+- Always return a single parent element or use React Fragments
+- Use camelCase for HTML attributes (className instead of class)
+- Close all tags, even self-closing ones like <br />
+- Keep components small and focused on a single responsibility
+
+This foundational knowledge will help you build more complex React applications with confidence!
+      `,
+      duration: "8 min read"
+    },
+    "Python Basics": {
+      title: "Variables and Data Types",
+      content: `
+# Variables and Data Types in Python
+
+Python is known for its simplicity and readability. Understanding variables and data types is fundamental to programming in Python.
+
+## Variables in Python
+
+Variables in Python are created by simply assigning a value to a name:
+
+\`\`\`python
+name = "Alice"
+age = 25
+height = 5.6
+is_student = True
+\`\`\`
+
+## Basic Data Types:
+
+1. **Strings**: Text data enclosed in quotes
+2. **Integers**: Whole numbers
+3. **Floats**: Decimal numbers
+4. **Booleans**: True or False values
+5. **Lists**: Ordered collections of items
+6. **Dictionaries**: Key-value pairs
+
+## Example Usage:
+
+\`\`\`python
+# Different data types
+greeting = "Hello, Python!"
+numbers = [1, 2, 3, 4, 5]
+person = {"name": "Bob", "age": 30}
+
+# Dynamic typing
+x = 10        # x is an integer
+x = "Hello"   # now x is a string
+\`\`\`
+
+Python's dynamic typing means you don't need to declare variable types explicitly - Python figures it out for you!
+      `,
+      duration: "6 min read"
+    },
+    "Machine Learning": {
+      title: "Introduction to Neural Networks",
+      content: `
+# Introduction to Neural Networks
+
+Neural networks are the backbone of modern deep learning, inspired by how biological neurons work in the human brain.
+
+## What are Neural Networks?
+
+A neural network is a computational model consisting of interconnected nodes (neurons) organized in layers:
+
+- **Input Layer**: Receives the raw data
+- **Hidden Layers**: Process and transform the data
+- **Output Layer**: Produces the final prediction
+
+## Key Components:
+
+1. **Neurons**: Basic processing units that apply a function to inputs
+2. **Weights**: Parameters that determine the strength of connections
+3. **Biases**: Additional parameters that help the model fit the data
+4. **Activation Functions**: Non-linear functions like ReLU, Sigmoid, or Tanh
+
+## How They Learn:
+
+Neural networks learn through a process called backpropagation:
+1. Forward pass: Data flows through the network to make predictions
+2. Loss calculation: Compare predictions with actual values
+3. Backward pass: Adjust weights to minimize the loss
+4. Repeat: Continue this process for many iterations
+
+## Applications:
+
+- Image recognition and computer vision
+- Natural language processing
+- Speech recognition
+- Recommendation systems
+- Game playing (like AlphaGo)
+
+Understanding these fundamentals will prepare you for more advanced topics in deep learning!
+      `,
+      duration: "12 min read"
+    }
+  };
+
+  const currentLessonData = mockLessons[session.topic as keyof typeof mockLessons] || {
+    title: "Custom Learning Content",
+    content: `# ${session.topic}\n\nThis is a customized lesson for ${session.topic} at ${session.level} level. In a full implementation, this content would be generated by AI based on your specific topic and difficulty level.`,
+    duration: "10 min read"
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-surface p-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <Button 
+            variant="ghost" 
+            onClick={onBackToDashboard}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Dashboard
+          </Button>
+          
+          <div className="flex items-center gap-4">
+            <Badge variant="secondary" className="capitalize">
+              {session.level}
+            </Badge>
+            <div className="text-sm text-muted-foreground">
+              Lesson {session.currentLesson} of {session.totalLessons}
+            </div>
+          </div>
+        </div>
+
+        {/* Progress */}
+        <Card className="mb-6 shadow-card">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="font-semibold">{session.topic}</h2>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Clock className="h-4 w-4" />
+                {currentLessonData.duration}
+              </div>
+            </div>
+            <Progress 
+              value={(session.currentLesson / session.totalLessons) * 100} 
+              className="h-2"
+            />
+          </CardContent>
+        </Card>
+
+        {/* Lesson Content */}
+        <Card className="mb-6 shadow-card">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-learning-primary" />
+              {currentLessonData.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="prose max-w-none">
+              <div className="whitespace-pre-line text-foreground leading-relaxed">
+                {currentLessonData.content}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Navigation */}
+        <div className="flex items-center justify-between">
+          <Button 
+            variant="outline"
+            disabled={session.currentLesson === 1}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Previous Lesson
+          </Button>
+
+          <Button 
+            onClick={onStartQuiz}
+            className="bg-gradient-primary hover:opacity-90 shadow-button flex items-center gap-2"
+          >
+            <Play className="h-4 w-4" />
+            Take Quiz
+          </Button>
+
+          <Button 
+            variant="outline"
+            disabled={session.currentLesson === session.totalLessons}
+            className="flex items-center gap-2"
+          >
+            Next Lesson
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
