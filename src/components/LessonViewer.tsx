@@ -3,15 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ArrowRight, BookOpen, Clock, Play } from "lucide-react";
-
-interface LearningSession {
-  topic: string;
-  level: "beginner" | "intermediate" | "expert";
-  currentLesson: number;
-  totalLessons: number;
-  score: number;
-  streak: number;
-}
+import { LearningSession } from "@/hooks/useLearningData";
 
 interface LessonViewerProps {
   session: LearningSession;
@@ -169,7 +161,7 @@ Understanding these fundamentals will prepare you for more advanced topics in de
               {session.level}
             </Badge>
             <div className="text-sm text-muted-foreground">
-              Lesson {session.currentLesson} of {session.totalLessons}
+              Lesson {session.current_lesson} of {session.total_lessons}
             </div>
           </div>
         </div>
@@ -185,7 +177,7 @@ Understanding these fundamentals will prepare you for more advanced topics in de
               </div>
             </div>
             <Progress 
-              value={(session.currentLesson / session.totalLessons) * 100} 
+              value={(session.current_lesson / session.total_lessons) * 100} 
               className="h-2"
             />
           </CardContent>
@@ -212,7 +204,7 @@ Understanding these fundamentals will prepare you for more advanced topics in de
         <div className="flex items-center justify-between">
           <Button 
             variant="outline"
-            disabled={session.currentLesson === 1}
+            disabled={session.current_lesson === 1}
             className="flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -229,7 +221,7 @@ Understanding these fundamentals will prepare you for more advanced topics in de
 
           <Button 
             variant="outline"
-            disabled={session.currentLesson === session.totalLessons}
+            disabled={session.current_lesson === session.total_lessons}
             className="flex items-center gap-2"
           >
             Next Lesson

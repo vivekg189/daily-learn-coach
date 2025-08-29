@@ -15,7 +15,7 @@ interface QuizQuestion {
 interface QuizComponentProps {
   topic: string;
   level: "beginner" | "intermediate" | "expert";
-  onComplete: (score: number) => void;
+  onComplete: (score: number, totalQuestions: number, answers: any) => void;
   onBack: () => void;
 }
 
@@ -138,7 +138,7 @@ export function QuizComponent({ topic, level, onComplete, onBack }: QuizComponen
         // Quiz complete
         const score = Math.round((newAnswers.filter((answer, index) => answer === questions[index].correctAnswer).length / questions.length) * 100);
         setQuizComplete(true);
-        setTimeout(() => onComplete(score), 2000);
+        setTimeout(() => onComplete(score, questions.length, newAnswers), 2000);
       }
     }, 2000);
   };
