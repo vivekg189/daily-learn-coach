@@ -49,48 +49,169 @@ This foundational knowledge will help you build more complex React applications 
       duration: "8 min read"
     },
     "Python Basics": {
-      title: "Variables and Data Types",
+      title: "Introduction to Python Programming",
       content: `
-# Variables and Data Types in Python
+# Introduction to Python Programming
 
-Python is known for its simplicity and readability. Understanding variables and data types is fundamental to programming in Python.
+## What is Python?
 
-## Variables in Python
+Python is a powerful, high-level programming language that has become one of the most popular languages in the world. Created by Guido van Rossum in 1991, Python is known for its simple, readable syntax that makes it perfect for beginners while being powerful enough for complex applications.
 
-Variables in Python are created by simply assigning a value to a name:
+## Why Learn Python?
+
+🐍 **Easy to Learn**: Python's syntax is close to natural language
+🚀 **Versatile**: Used in web development, data science, AI, automation, and more  
+📚 **Large Community**: Millions of developers and extensive documentation
+💼 **High Demand**: One of the most sought-after programming skills
+
+## Your First Python Program
+
+Let's start with the traditional "Hello, World!" program:
 
 \`\`\`python
+print("Hello, World!")
+\`\`\`
+
+That's it! Notice how simple and readable Python code is.
+
+## Core Python Concepts
+
+### 1. Variables and Data Types
+
+Variables store data that your program can use and manipulate:
+
+\`\`\`python
+# Strings (text)
 name = "Alice"
-age = 25
-height = 5.6
+message = "Welcome to Python!"
+
+# Numbers
+age = 25              # Integer
+height = 5.6          # Float
+temperature = -10     # Negative number
+
+# Boolean (True/False)
 is_student = True
+is_working = False
 \`\`\`
 
-## Basic Data Types:
-
-1. **Strings**: Text data enclosed in quotes
-2. **Integers**: Whole numbers
-3. **Floats**: Decimal numbers
-4. **Booleans**: True or False values
-5. **Lists**: Ordered collections of items
-6. **Dictionaries**: Key-value pairs
-
-## Example Usage:
+### 2. Basic Operations
 
 \`\`\`python
-# Different data types
-greeting = "Hello, Python!"
-numbers = [1, 2, 3, 4, 5]
-person = {"name": "Bob", "age": 30}
+# Math operations
+result = 10 + 5       # Addition: 15
+result = 20 - 8       # Subtraction: 12
+result = 4 * 3        # Multiplication: 12
+result = 15 / 3       # Division: 5.0
 
-# Dynamic typing
-x = 10        # x is an integer
-x = "Hello"   # now x is a string
+# String operations
+full_name = "John" + " " + "Doe"    # Concatenation
+repeated = "Hi! " * 3               # Repetition: "Hi! Hi! Hi! "
 \`\`\`
 
-Python's dynamic typing means you don't need to declare variable types explicitly - Python figures it out for you!
+### 3. Functions - Reusable Code Blocks
+
+Functions help you organize and reuse code:
+
+\`\`\`python
+# Defining a function
+def greet_user(name):
+    return f"Hello, {name}! Welcome to Python!"
+
+# Using the function
+message = greet_user("Alice")
+print(message)  # Output: Hello, Alice! Welcome to Python!
+
+# Function with multiple parameters
+def calculate_area(length, width):
+    area = length * width
+    return area
+
+room_area = calculate_area(10, 12)
+print(f"Room area: {room_area} square feet")
+\`\`\`
+
+### 4. Lists - Storing Multiple Items
+
+\`\`\`python
+# Creating lists
+fruits = ["apple", "banana", "orange"]
+numbers = [1, 2, 3, 4, 5]
+mixed = ["text", 42, True, 3.14]
+
+# Accessing items (starting from 0)
+first_fruit = fruits[0]      # "apple"
+last_number = numbers[-1]    # 5 (negative index counts from end)
+
+# Adding items
+fruits.append("grape")       # Add to end
+fruits.insert(1, "mango")    # Insert at position 1
+\`\`\`
+
+### 5. Dictionaries - Key-Value Pairs
+
+\`\`\`python
+# Creating a dictionary
+student = {
+    "name": "John",
+    "age": 20,
+    "grade": "A",
+    "subjects": ["Math", "Science", "English"]
+}
+
+# Accessing values
+student_name = student["name"]        # "John"
+student_age = student.get("age", 0)   # 20 (with default value)
+
+# Adding/updating values
+student["email"] = "john@email.com"
+student["age"] = 21
+\`\`\`
+
+### 6. Control Flow - Making Decisions
+
+\`\`\`python
+# If statements
+age = 18
+
+if age >= 18:
+    print("You are an adult")
+elif age >= 13:
+    print("You are a teenager")
+else:
+    print("You are a child")
+
+# Loops - repeating actions
+# For loop
+for i in range(5):
+    print(f"Count: {i}")
+
+# While loop
+count = 0
+while count < 3:
+    print(f"While count: {count}")
+    count += 1
+\`\`\`
+
+## Python's Philosophy - The Zen of Python
+
+Python follows these principles:
+- **Simple is better than complex**
+- **Readability counts**
+- **There should be one obvious way to do it**
+
+## What's Next?
+
+In upcoming lessons, you'll learn:
+- More advanced data structures
+- File handling and input/output
+- Error handling with try/except
+- Object-oriented programming
+- Working with external libraries
+
+Python's journey from beginner to expert is exciting and rewarding. Let's continue building your Python skills!
       `,
-      duration: "6 min read"
+      duration: "10 min read"
     },
     "Machine Learning": {
       title: "Introduction to Neural Networks",
