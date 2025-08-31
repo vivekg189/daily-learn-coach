@@ -14,585 +14,78 @@ interface LessonViewerProps {
 export function LessonViewer({ session, onStartQuiz, onBackToDashboard }: LessonViewerProps) {
   const mockLessons = {
     "React Fundamentals": {
-      title: "Understanding JSX and Components",
-      content: `
-# Understanding JSX and Components
-
-JSX (JavaScript XML) is a syntax extension for JavaScript that lets you write HTML-like code in your React components. It's one of the core concepts that makes React so powerful and intuitive.
-
-## What is JSX?
-
-JSX allows you to describe what your UI should look like by combining JavaScript with HTML-like syntax. Here's a simple example:
-
-\`\`\`jsx
-const Welcome = () => {
-  return <h1>Hello, World!</h1>;
-};
-\`\`\`
-
-## Key Concepts:
-
-1. **Components are Functions**: In modern React, components are just JavaScript functions that return JSX
-2. **Props**: Components can receive data through props (properties)
-3. **State**: Components can manage their own internal state
-4. **Virtual DOM**: React uses a virtual representation of the DOM for efficient updates
-
-## Best Practices:
-
-- Always return a single parent element or use React Fragments
-- Use camelCase for HTML attributes (className instead of class)
-- Close all tags, even self-closing ones like <br />
-- Keep components small and focused on a single responsibility
-
-This foundational knowledge will help you build more complex React applications with confidence!
-      `,
-      duration: "8 min read"
+      lessons: [
+        {
+          title: "Understanding JSX and Components",
+          content: "# Understanding JSX and Components\n\nJSX (JavaScript XML) is a syntax extension for JavaScript that lets you write HTML-like code in your React components.\n\n## What is JSX?\n\nJSX allows you to describe what your UI should look like by combining JavaScript with HTML-like syntax.\n\n## Key Concepts:\n\n1. **Components are Functions**: In modern React, components are just JavaScript functions that return JSX\n2. **Props**: Components can receive data through props (properties)\n3. **State**: Components can manage their own internal state\n4. **Virtual DOM**: React uses a virtual representation of the DOM for efficient updates\n\n## Best Practices:\n\n- Always return a single parent element or use React Fragments\n- Use camelCase for HTML attributes (className instead of class)\n- Close all tags, even self-closing ones\n- Keep components small and focused on a single responsibility",
+          duration: "8 min read"
+        }
+      ]
     },
     "Python Basics": {
-      title: "🐍 Python Topics from Scratch with Levels",
-      content: `
-# 🐍 Python Topics from Scratch with Levels
-
-## 🔰 1. Beginner (Foundations)
-*Focus: Syntax, data types, and basic problem-solving*
-
-### ✅ Introduction to Python
-
-**Installation**
-- Python installation (Python.org)
-- IDEs setup (VS Code, PyCharm, Jupyter)
-- Setting up your development environment
-
-**First Program**
-\`\`\`python
-print("Hello, World!")
-\`\`\`
-
-**Comments & Indentation**
-\`\`\`python
-# This is a single-line comment
-"""
-This is a multi-line comment
-or docstring
-"""
-
-# Python uses indentation for code blocks
-if True:
-    print("Indented code")  # 4 spaces indentation
-\`\`\`
-
-### ✅ Basics
-
-**Variables & Constants**
-\`\`\`python
-# Variables (dynamic typing)
-name = "Alice"
-age = 25
-height = 5.6
-
-# Constants (convention: uppercase)
-PI = 3.14159
-MAX_SIZE = 100
-\`\`\`
-
-**Data Types**
-\`\`\`python
-# Basic data types
-integer_num = 42           # int
-float_num = 3.14          # float
-text = "Hello Python"     # str
-is_active = True          # bool
-
-# Check data type
-print(type(integer_num))  # <class 'int'>
-\`\`\`
-
-**Typecasting**
-\`\`\`python
-# Converting between types
-num_str = "123"
-num_int = int(num_str)    # Convert to integer
-num_float = float(num_str) # Convert to float
-bool_val = bool(num_int)   # Convert to boolean
-
-print(str(42))            # "42"
-\`\`\`
-
-**Input/Output**
-\`\`\`python
-# Getting user input
-name = input("Enter your name: ")
-age = int(input("Enter your age: "))
-
-# Output with formatting
-print(f"Hello {name}, you are {age} years old")
-print("Name: {}, Age: {}".format(name, age))
-\`\`\`
-
-### ✅ Operators
-
-**Arithmetic Operators**
-\`\`\`python
-a, b = 10, 3
-
-print(a + b)    # Addition: 13
-print(a - b)    # Subtraction: 7
-print(a * b)    # Multiplication: 30
-print(a / b)    # Division: 3.333...
-print(a // b)   # Floor division: 3
-print(a % b)    # Modulus: 1
-print(a ** b)   # Exponentiation: 1000
-\`\`\`
-
-**Comparison Operators**
-\`\`\`python
-x, y = 5, 10
-
-print(x == y)   # Equal: False
-print(x != y)   # Not equal: True
-print(x < y)    # Less than: True
-print(x > y)    # Greater than: False
-print(x <= y)   # Less than or equal: True
-print(x >= y)   # Greater than or equal: False
-\`\`\`
-
-**Logical Operators**
-\`\`\`python
-a, b = True, False
-
-print(a and b)  # Logical AND: False
-print(a or b)   # Logical OR: True
-print(not a)    # Logical NOT: False
-\`\`\`
-
-**Assignment Operators**
-\`\`\`python
-x = 10
-x += 5    # x = x + 5, result: 15
-x -= 3    # x = x - 3, result: 12
-x *= 2    # x = x * 2, result: 24
-x /= 4    # x = x / 4, result: 6.0
-\`\`\`
-
-**Membership & Identity Operators**
-\`\`\`python
-# Membership operators
-fruits = ["apple", "banana", "orange"]
-print("apple" in fruits)      # True
-print("grape" not in fruits)  # True
-
-# Identity operators
-a = [1, 2, 3]
-b = [1, 2, 3]
-c = a
-
-print(a is c)     # True (same object)
-print(a is b)     # False (different objects)
-print(a == b)     # True (same values)
-\`\`\`
-
-### ✅ Control Structures
-
-**Conditional Statements**
-\`\`\`python
-# if-elif-else
-score = 85
-
-if score >= 90:
-    grade = "A"
-elif score >= 80:
-    grade = "B"
-elif score >= 70:
-    grade = "C"
-else:
-    grade = "F"
-
-print(f"Grade: {grade}")
-
-# Ternary operator
-status = "Pass" if score >= 60 else "Fail"
-\`\`\`
-
-**Loops**
-\`\`\`python
-# while loop
-count = 0
-while count < 5:
-    print(f"Count: {count}")
-    count += 1
-
-# for loop
-for i in range(5):
-    print(f"Number: {i}")
-
-# for loop with list
-fruits = ["apple", "banana", "orange"]
-for fruit in fruits:
-    print(f"Fruit: {fruit}")
-
-# Nested loops
-for i in range(3):
-    for j in range(2):
-        print(f"i={i}, j={j}")
-\`\`\`
-
-**Loop Control**
-\`\`\`python
-# break - exit loop
-for i in range(10):
-    if i == 5:
-        break
-    print(i)  # Prints 0,1,2,3,4
-
-# continue - skip iteration
-for i in range(5):
-    if i == 2:
-        continue
-    print(i)  # Prints 0,1,3,4
-
-# pass - placeholder
-for i in range(3):
-    if i == 1:
-        pass  # Do nothing
-    else:
-        print(i)
-\`\`\`
-
-### ✅ Data Structures Basics
-
-**Strings**
-\`\`\`python
-text = "Hello Python"
-
-# String slicing
-print(text[0])      # "H"
-print(text[0:5])    # "Hello"
-print(text[:5])     # "Hello"
-print(text[6:])     # "Python"
-print(text[-1])     # "n" (last character)
-
-# String methods
-print(text.upper())           # "HELLO PYTHON"
-print(text.lower())           # "hello python"
-print(text.split())           # ["Hello", "Python"]
-print(text.replace("Hello", "Hi"))  # "Hi Python"
-print(len(text))              # 12
-\`\`\`
-
-**Lists**
-\`\`\`python
-# Creating and manipulating lists
-numbers = [1, 2, 3, 4, 5]
-mixed = ["text", 42, True, 3.14]
-
-# Accessing elements
-print(numbers[0])     # 1
-print(numbers[-1])    # 5 (last element)
-
-# List methods
-numbers.append(6)           # Add to end
-numbers.insert(0, 0)        # Insert at index
-numbers.remove(3)           # Remove first occurrence
-popped = numbers.pop()      # Remove and return last
-numbers.extend([7, 8, 9])   # Add multiple elements
-
-# List slicing
-print(numbers[1:4])   # Elements from index 1 to 3
-\`\`\`
-
-**Tuples**
-\`\`\`python
-# Tuples are immutable
-coordinates = (10, 20)
-person = ("Alice", 25, "Engineer")
-
-# Accessing tuple elements
-print(person[0])      # "Alice"
-print(person[-1])     # "Engineer"
-
-# Tuple unpacking
-name, age, job = person
-print(f"{name} is {age} years old")
-\`\`\`
-
-**Sets**
-\`\`\`python
-# Sets contain unique elements
-numbers = {1, 2, 3, 4, 5}
-fruits = {"apple", "banana", "orange"}
-
-# Set operations
-numbers.add(6)
-numbers.remove(1)
-print(3 in numbers)   # True
-
-# Set operations
-set1 = {1, 2, 3}
-set2 = {3, 4, 5}
-print(set1.union(set2))         # {1, 2, 3, 4, 5}
-print(set1.intersection(set2))  # {3}
-\`\`\`
-
-**Dictionaries**
-\`\`\`python
-# Key-value pairs
-student = {
-    "name": "John",
-    "age": 20,
-    "courses": ["Math", "Physics"]
-}
-
-# Accessing values
-print(student["name"])          # "John"
-print(student.get("age", 0))    # 20
-
-# Modifying dictionaries
-student["grade"] = "A"
-student["age"] = 21
-del student["courses"]
-
-# Dictionary methods
-print(student.keys())    # dict_keys(['name', 'age', 'grade'])
-print(student.values())  # dict_values(['John', 21, 'A'])
-print(student.items())   # dict_items([...])
-\`\`\`
-
-**Iteration over Collections**
-\`\`\`python
-# List iteration
-fruits = ["apple", "banana", "orange"]
-for fruit in fruits:
-    print(fruit)
-
-# Dictionary iteration
-student = {"name": "John", "age": 20}
-for key in student:
-    print(f"{key}: {student[key]}")
-
-# Using items()
-for key, value in student.items():
-    print(f"{key}: {value}")
-
-# Enumerate for index
-for index, fruit in enumerate(fruits):
-    print(f"{index}: {fruit}")
-\`\`\`
-
-### ✅ Functions
-
-**Defining & Calling Functions**
-\`\`\`python
-# Basic function
-def greet():
-    print("Hello!")
-
-greet()  # Call the function
-
-# Function with parameters
-def greet_user(name):
-    print(f"Hello, {name}!")
-
-greet_user("Alice")
-
-# Function with return value
-def add_numbers(a, b):
-    return a + b
-
-result = add_numbers(5, 3)
-print(result)  # 8
-\`\`\`
-
-**Parameters**
-\`\`\`python
-# Positional parameters
-def describe_pet(name, animal_type):
-    print(f"I have a {animal_type} named {name}")
-
-describe_pet("Max", "dog")
-
-# Keyword parameters
-describe_pet(animal_type="cat", name="Whiskers")
-
-# Default parameters
-def greet_user(name, greeting="Hello"):
-    print(f"{greeting}, {name}!")
-
-greet_user("Alice")           # Hello, Alice!
-greet_user("Bob", "Hi")       # Hi, Bob!
-
-# *args - variable positional arguments
-def sum_all(*numbers):
-    return sum(numbers)
-
-print(sum_all(1, 2, 3, 4))    # 10
-
-# **kwargs - variable keyword arguments
-def display_info(**info):
-    for key, value in info.items():
-        print(f"{key}: {value}")
-
-display_info(name="Alice", age=25, city="New York")
-\`\`\`
-
----
-
-## 🟡 2. Intermediate (Core Programming)
-*Focus: OOP, file handling, and error handling*
-
-### ✅ Advanced Data Structures
-
-**List Comprehension**
-\`\`\`python
-# Basic list comprehension
-squares = [x**2 for x in range(10)]
-# Instead of:
-squares = []
-for x in range(10):
-    squares.append(x**2)
-
-# With condition
-even_squares = [x**2 for x in range(10) if x % 2 == 0]
-
-# Nested comprehension
-matrix = [[i*j for i in range(3)] for j in range(3)]
-\`\`\`
-
-**Dictionary Comprehension**
-\`\`\`python
-# Basic dictionary comprehension
-word_lengths = {word: len(word) for word in ["apple", "banana", "orange"]}
-
-# With condition
-even_squares = {x: x**2 for x in range(10) if x % 2 == 0}
-\`\`\`
-
-**Nested Collections**
-\`\`\`python
-# List of lists (matrix)
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
-
-# Dictionary of lists
-grades = {
-    "Alice": [90, 85, 92],
-    "Bob": [78, 82, 80],
-    "Charlie": [95, 90, 88]
-}
-
-# Accessing nested data
-print(matrix[1][2])           # 6
-print(grades["Alice"][0])     # 90
-\`\`\`
-
-### ✅ Functions (Deep)
-
-**Recursion**
-\`\`\`python
-def factorial(n):
-    if n <= 1:
-        return 1
-    return n * factorial(n - 1)
-
-print(factorial(5))  # 120
-
-def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
-\`\`\`
-
-**Lambda Functions**
-\`\`\`python
-# Lambda (anonymous) functions
-square = lambda x: x**2
-print(square(5))  # 25
-
-# Using with map, filter, reduce
-numbers = [1, 2, 3, 4, 5]
-
-# map - apply function to all elements
-squares = list(map(lambda x: x**2, numbers))
-
-# filter - filter elements based on condition
-evens = list(filter(lambda x: x % 2 == 0, numbers))
-
-# reduce - reduce list to single value
-from functools import reduce
-sum_all = reduce(lambda x, y: x + y, numbers)
-\`\`\`
-
-**Higher-Order Functions**
-\`\`\`python
-def apply_operation(numbers, operation):
-    return [operation(x) for x in numbers]
-
-def square(x):
-    return x**2
-
-def cube(x):
-    return x**3
-
-numbers = [1, 2, 3, 4]
-squared = apply_operation(numbers, square)
-cubed = apply_operation(numbers, cube)
-\`\`\`
-
-This comprehensive curriculum takes you from absolute beginner to intermediate Python programmer with hands-on examples and practical applications!
-      `,
-      duration: "10 min read"
+      lessons: [
+        {
+          title: "🐍 Introduction to Python & Setup",
+          content: "# 🐍 Introduction to Python & Setup\n\n## What is Python?\n\nPython is a powerful, high-level programming language created by Guido van Rossum in 1991. It's known for its simple, readable syntax.\n\n## Why Learn Python?\n\n🐍 **Easy to Learn**: Python's syntax is close to natural language\n🚀 **Versatile**: Used in web development, data science, AI, automation\n📚 **Large Community**: Millions of developers and extensive documentation\n💼 **High Demand**: One of the most sought-after programming skills\n\n## Installation & Setup\n\n**Python Installation**\n- Download from Python.org (latest version)\n- Choose \"Add Python to PATH\" during installation\n- Verify installation: `python --version`\n\n**IDE Setup**\n- **VS Code**: Lightweight with Python extension\n- **PyCharm**: Full-featured Python IDE\n- **Jupyter Notebook**: Great for data science and learning\n\n## Your First Python Program\n\n```python\nprint(\"Hello, World!\")\n```\n\n## Python Philosophy\n\nKey principles:\n- **Simple is better than complex**\n- **Readability counts**\n- **There should be one obvious way to do it**",
+          duration: "10 min read"
+        },
+        {
+          title: "Variables, Data Types & Basic Operations",
+          content: "# Variables, Data Types & Basic Operations\n\n## Variables & Constants\n\n**Variables** store data that can change:\n```python\nname = \"Alice\"        # String\nage = 25             # Integer\nheight = 5.6         # Float\nis_student = True    # Boolean\n```\n\n## Data Types\n\n**Basic Data Types**\n```python\n# Integer (whole numbers)\ncount = 42\nnegative = -10\n\n# Float (decimal numbers)\nprice = 19.99\ntemperature = -5.5\n\n# String (text)\nmessage = \"Hello Python\"\nname = 'Alice'  # Single or double quotes\n\n# Boolean (True/False)\nis_active = True\nis_complete = False\n```\n\n## Basic Operations\n\n**Arithmetic Operations**\n```python\na, b = 10, 3\n\nprint(a + b)    # Addition: 13\nprint(a - b)    # Subtraction: 7\nprint(a * b)    # Multiplication: 30\nprint(a / b)    # Division: 3.333...\nprint(a // b)   # Floor division: 3\nprint(a % b)    # Modulus (remainder): 1\nprint(a ** b)   # Exponentiation: 1000\n```",
+          duration: "12 min read"
+        },
+        {
+          title: "Control Structures & Loops",
+          content: "# Control Structures & Loops\n\n## Conditional Statements\n\n**if-elif-else**\n```python\nscore = 85\n\nif score >= 90:\n    grade = \"A\"\n    print(\"Excellent!\")\nelif score >= 80:\n    grade = \"B\"\n    print(\"Good job!\")\nelse:\n    grade = \"C\"\n    print(\"Keep trying!\")\n```\n\n## Loops\n\n**for Loop**\n```python\n# Range function\nfor i in range(5):          # 0, 1, 2, 3, 4\n    print(f\"Number: {i}\")\n\n# Iterating over sequences\nfruits = [\"apple\", \"banana\", \"orange\"]\nfor fruit in fruits:\n    print(f\"I like {fruit}\")\n```\n\n**while Loop**\n```python\ncount = 0\nwhile count < 5:\n    print(f\"Count: {count}\")\n    count += 1\n```\n\n## Loop Control\n\n- **break**: Exit the loop\n- **continue**: Skip current iteration\n- **pass**: Placeholder (do nothing)",
+          duration: "15 min read"
+        },
+        {
+          title: "Data Structures: Lists, Dictionaries & Functions",
+          content: "# Data Structures: Lists, Dictionaries & Functions\n\n## Lists - Ordered Collections\n\n```python\n# Creating lists\nfruits = [\"apple\", \"banana\", \"orange\"]\nnumbers = [1, 2, 3, 4, 5]\nmixed = [\"text\", 42, True, 3.14]\n\n# Accessing elements\nprint(fruits[0])      # \"apple\"\nprint(fruits[-1])     # \"orange\" (last element)\n\n# List methods\nfruits.append(\"grape\")        # Add to end\nfruits.insert(1, \"mango\")     # Insert at index 1\nfruits.remove(\"banana\")       # Remove first occurrence\n```\n\n## Dictionaries - Key-Value Pairs\n\n```python\n# Creating dictionaries\nstudent = {\n    \"name\": \"John\",\n    \"age\": 20,\n    \"courses\": [\"Math\", \"Physics\"]\n}\n\n# Accessing values\nprint(student[\"name\"])          # \"John\"\nprint(student.get(\"age\"))       # 20\n\n# Adding/updating values\nstudent[\"email\"] = \"john@email.com\"\nstudent[\"age\"] = 21\n```\n\n## Functions - Reusable Code Blocks\n\n```python\n# Basic function\ndef greet(name):\n    return f\"Hello, {name}!\"\n\n# Function with parameters\ndef add_numbers(a, b):\n    return a + b\n\n# Function calls\nmessage = greet(\"Alice\")\nresult = add_numbers(5, 3)\n```",
+          duration: "18 min read"
+        }
+      ]
     },
     "Machine Learning": {
-      title: "Introduction to Neural Networks",
-      content: `
-# Introduction to Neural Networks
-
-Neural networks are the backbone of modern deep learning, inspired by how biological neurons work in the human brain.
-
-## What are Neural Networks?
-
-A neural network is a computational model consisting of interconnected nodes (neurons) organized in layers:
-
-- **Input Layer**: Receives the raw data
-- **Hidden Layers**: Process and transform the data
-- **Output Layer**: Produces the final prediction
-
-## Key Components:
-
-1. **Neurons**: Basic processing units that apply a function to inputs
-2. **Weights**: Parameters that determine the strength of connections
-3. **Biases**: Additional parameters that help the model fit the data
-4. **Activation Functions**: Non-linear functions like ReLU, Sigmoid, or Tanh
-
-## How They Learn:
-
-Neural networks learn through a process called backpropagation:
-1. Forward pass: Data flows through the network to make predictions
-2. Loss calculation: Compare predictions with actual values
-3. Backward pass: Adjust weights to minimize the loss
-4. Repeat: Continue this process for many iterations
-
-## Applications:
-
-- Image recognition and computer vision
-- Natural language processing
-- Speech recognition
-- Recommendation systems
-- Game playing (like AlphaGo)
-
-Understanding these fundamentals will prepare you for more advanced topics in deep learning!
-      `,
-      duration: "12 min read"
+      lessons: [
+        {
+          title: "Introduction to Neural Networks",
+          content: "# Introduction to Neural Networks\n\nNeural networks are the backbone of modern deep learning, inspired by how biological neurons work in the human brain.\n\n## What are Neural Networks?\n\nA neural network is a computational model consisting of interconnected nodes (neurons) organized in layers:\n\n- **Input Layer**: Receives the raw data\n- **Hidden Layers**: Process and transform the data\n- **Output Layer**: Produces the final prediction\n\n## Key Components:\n\n1. **Neurons**: Basic processing units that apply a function to inputs\n2. **Weights**: Parameters that determine the strength of connections\n3. **Biases**: Additional parameters that help the model fit the data\n4. **Activation Functions**: Non-linear functions like ReLU, Sigmoid, or Tanh\n\n## How They Learn:\n\nNeural networks learn through a process called backpropagation:\n1. Forward pass: Data flows through the network to make predictions\n2. Loss calculation: Compare predictions with actual values\n3. Backward pass: Adjust weights to minimize the loss\n4. Repeat: Continue this process for many iterations\n\n## Applications:\n\n- Image recognition and computer vision\n- Natural language processing\n- Speech recognition\n- Recommendation systems\n- Game playing (like AlphaGo)",
+          duration: "12 min read"
+        }
+      ]
     }
   };
 
-  const currentLessonData = mockLessons[session.topic as keyof typeof mockLessons] || {
-    title: "Custom Learning Content",
-    content: `# ${session.topic}\n\nThis is a customized lesson for ${session.topic} at ${session.level} level. In a full implementation, this content would be generated by AI based on your specific topic and difficulty level.`,
-    duration: "10 min read"
-  };
+  const topicLessons = mockLessons[session.topic as keyof typeof mockLessons];
+  
+  if (!topicLessons) {
+    return (
+      <div className="min-h-screen bg-gradient-surface p-4">
+        <div className="max-w-4xl mx-auto">
+          <Card className="shadow-card">
+            <CardContent className="p-6 text-center">
+              <h2 className="text-xl font-semibold mb-4">Topic Not Found</h2>
+              <p className="text-muted-foreground mb-4">
+                The topic "{session.topic}" is not available yet. Please try:
+              </p>
+              <ul className="text-left max-w-md mx-auto space-y-1 text-muted-foreground">
+                <li>• React Fundamentals</li>
+                <li>• Python Basics</li>
+                <li>• Machine Learning</li>
+              </ul>
+              <Button onClick={onBackToDashboard} className="mt-4">
+                Back to Dashboard
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  const currentLessonIndex = (session.current_lesson || 1) - 1;
+  const currentLesson = topicLessons.lessons[currentLessonIndex] || topicLessons.lessons[0];
 
   return (
     <div className="min-h-screen bg-gradient-surface p-4">
@@ -613,7 +106,7 @@ Understanding these fundamentals will prepare you for more advanced topics in de
               {session.level}
             </Badge>
             <div className="text-sm text-muted-foreground">
-              Lesson {session.current_lesson} of {session.total_lessons}
+              Lesson {session.current_lesson || 1} of {topicLessons.lessons.length}
             </div>
           </div>
         </div>
@@ -625,11 +118,11 @@ Understanding these fundamentals will prepare you for more advanced topics in de
               <h2 className="font-semibold">{session.topic}</h2>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Clock className="h-4 w-4" />
-                {currentLessonData.duration}
+                {currentLesson.duration}
               </div>
             </div>
             <Progress 
-              value={(session.current_lesson / session.total_lessons) * 100} 
+              value={((session.current_lesson || 1) / topicLessons.lessons.length) * 100} 
               className="h-2"
             />
           </CardContent>
@@ -640,13 +133,13 @@ Understanding these fundamentals will prepare you for more advanced topics in de
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-learning-primary" />
-              {currentLessonData.title}
+              {currentLesson.title}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="prose max-w-none">
               <div className="whitespace-pre-line text-foreground leading-relaxed">
-                {currentLessonData.content}
+                {currentLesson.content}
               </div>
             </div>
           </CardContent>
@@ -673,7 +166,7 @@ Understanding these fundamentals will prepare you for more advanced topics in de
 
           <Button 
             variant="outline"
-            disabled={session.current_lesson === session.total_lessons}
+            disabled={session.current_lesson === topicLessons.lessons.length}
             className="flex items-center gap-2"
           >
             Next Lesson
