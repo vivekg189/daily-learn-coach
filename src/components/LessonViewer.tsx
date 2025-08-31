@@ -49,167 +49,498 @@ This foundational knowledge will help you build more complex React applications 
       duration: "8 min read"
     },
     "Python Basics": {
-      title: "Introduction to Python Programming",
+      title: "🐍 Python Topics from Scratch with Levels",
       content: `
-# Introduction to Python Programming
+# 🐍 Python Topics from Scratch with Levels
 
-## What is Python?
+## 🔰 1. Beginner (Foundations)
+*Focus: Syntax, data types, and basic problem-solving*
 
-Python is a powerful, high-level programming language that has become one of the most popular languages in the world. Created by Guido van Rossum in 1991, Python is known for its simple, readable syntax that makes it perfect for beginners while being powerful enough for complex applications.
+### ✅ Introduction to Python
 
-## Why Learn Python?
+**Installation**
+- Python installation (Python.org)
+- IDEs setup (VS Code, PyCharm, Jupyter)
+- Setting up your development environment
 
-🐍 **Easy to Learn**: Python's syntax is close to natural language
-🚀 **Versatile**: Used in web development, data science, AI, automation, and more  
-📚 **Large Community**: Millions of developers and extensive documentation
-💼 **High Demand**: One of the most sought-after programming skills
-
-## Your First Python Program
-
-Let's start with the traditional "Hello, World!" program:
-
+**First Program**
 \`\`\`python
 print("Hello, World!")
 \`\`\`
 
-That's it! Notice how simple and readable Python code is.
-
-## Core Python Concepts
-
-### 1. Variables and Data Types
-
-Variables store data that your program can use and manipulate:
-
+**Comments & Indentation**
 \`\`\`python
-# Strings (text)
+# This is a single-line comment
+"""
+This is a multi-line comment
+or docstring
+"""
+
+# Python uses indentation for code blocks
+if True:
+    print("Indented code")  # 4 spaces indentation
+\`\`\`
+
+### ✅ Basics
+
+**Variables & Constants**
+\`\`\`python
+# Variables (dynamic typing)
 name = "Alice"
-message = "Welcome to Python!"
+age = 25
+height = 5.6
 
-# Numbers
-age = 25              # Integer
-height = 5.6          # Float
-temperature = -10     # Negative number
-
-# Boolean (True/False)
-is_student = True
-is_working = False
+# Constants (convention: uppercase)
+PI = 3.14159
+MAX_SIZE = 100
 \`\`\`
 
-### 2. Basic Operations
-
+**Data Types**
 \`\`\`python
-# Math operations
-result = 10 + 5       # Addition: 15
-result = 20 - 8       # Subtraction: 12
-result = 4 * 3        # Multiplication: 12
-result = 15 / 3       # Division: 5.0
+# Basic data types
+integer_num = 42           # int
+float_num = 3.14          # float
+text = "Hello Python"     # str
+is_active = True          # bool
 
-# String operations
-full_name = "John" + " " + "Doe"    # Concatenation
-repeated = "Hi! " * 3               # Repetition: "Hi! Hi! Hi! "
+# Check data type
+print(type(integer_num))  # <class 'int'>
 \`\`\`
 
-### 3. Functions - Reusable Code Blocks
-
-Functions help you organize and reuse code:
-
+**Typecasting**
 \`\`\`python
-# Defining a function
-def greet_user(name):
-    return f"Hello, {name}! Welcome to Python!"
+# Converting between types
+num_str = "123"
+num_int = int(num_str)    # Convert to integer
+num_float = float(num_str) # Convert to float
+bool_val = bool(num_int)   # Convert to boolean
 
-# Using the function
-message = greet_user("Alice")
-print(message)  # Output: Hello, Alice! Welcome to Python!
-
-# Function with multiple parameters
-def calculate_area(length, width):
-    area = length * width
-    return area
-
-room_area = calculate_area(10, 12)
-print(f"Room area: {room_area} square feet")
+print(str(42))            # "42"
 \`\`\`
 
-### 4. Lists - Storing Multiple Items
-
+**Input/Output**
 \`\`\`python
-# Creating lists
+# Getting user input
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+
+# Output with formatting
+print(f"Hello {name}, you are {age} years old")
+print("Name: {}, Age: {}".format(name, age))
+\`\`\`
+
+### ✅ Operators
+
+**Arithmetic Operators**
+\`\`\`python
+a, b = 10, 3
+
+print(a + b)    # Addition: 13
+print(a - b)    # Subtraction: 7
+print(a * b)    # Multiplication: 30
+print(a / b)    # Division: 3.333...
+print(a // b)   # Floor division: 3
+print(a % b)    # Modulus: 1
+print(a ** b)   # Exponentiation: 1000
+\`\`\`
+
+**Comparison Operators**
+\`\`\`python
+x, y = 5, 10
+
+print(x == y)   # Equal: False
+print(x != y)   # Not equal: True
+print(x < y)    # Less than: True
+print(x > y)    # Greater than: False
+print(x <= y)   # Less than or equal: True
+print(x >= y)   # Greater than or equal: False
+\`\`\`
+
+**Logical Operators**
+\`\`\`python
+a, b = True, False
+
+print(a and b)  # Logical AND: False
+print(a or b)   # Logical OR: True
+print(not a)    # Logical NOT: False
+\`\`\`
+
+**Assignment Operators**
+\`\`\`python
+x = 10
+x += 5    # x = x + 5, result: 15
+x -= 3    # x = x - 3, result: 12
+x *= 2    # x = x * 2, result: 24
+x /= 4    # x = x / 4, result: 6.0
+\`\`\`
+
+**Membership & Identity Operators**
+\`\`\`python
+# Membership operators
 fruits = ["apple", "banana", "orange"]
+print("apple" in fruits)      # True
+print("grape" not in fruits)  # True
+
+# Identity operators
+a = [1, 2, 3]
+b = [1, 2, 3]
+c = a
+
+print(a is c)     # True (same object)
+print(a is b)     # False (different objects)
+print(a == b)     # True (same values)
+\`\`\`
+
+### ✅ Control Structures
+
+**Conditional Statements**
+\`\`\`python
+# if-elif-else
+score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+
+print(f"Grade: {grade}")
+
+# Ternary operator
+status = "Pass" if score >= 60 else "Fail"
+\`\`\`
+
+**Loops**
+\`\`\`python
+# while loop
+count = 0
+while count < 5:
+    print(f"Count: {count}")
+    count += 1
+
+# for loop
+for i in range(5):
+    print(f"Number: {i}")
+
+# for loop with list
+fruits = ["apple", "banana", "orange"]
+for fruit in fruits:
+    print(f"Fruit: {fruit}")
+
+# Nested loops
+for i in range(3):
+    for j in range(2):
+        print(f"i={i}, j={j}")
+\`\`\`
+
+**Loop Control**
+\`\`\`python
+# break - exit loop
+for i in range(10):
+    if i == 5:
+        break
+    print(i)  # Prints 0,1,2,3,4
+
+# continue - skip iteration
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)  # Prints 0,1,3,4
+
+# pass - placeholder
+for i in range(3):
+    if i == 1:
+        pass  # Do nothing
+    else:
+        print(i)
+\`\`\`
+
+### ✅ Data Structures Basics
+
+**Strings**
+\`\`\`python
+text = "Hello Python"
+
+# String slicing
+print(text[0])      # "H"
+print(text[0:5])    # "Hello"
+print(text[:5])     # "Hello"
+print(text[6:])     # "Python"
+print(text[-1])     # "n" (last character)
+
+# String methods
+print(text.upper())           # "HELLO PYTHON"
+print(text.lower())           # "hello python"
+print(text.split())           # ["Hello", "Python"]
+print(text.replace("Hello", "Hi"))  # "Hi Python"
+print(len(text))              # 12
+\`\`\`
+
+**Lists**
+\`\`\`python
+# Creating and manipulating lists
 numbers = [1, 2, 3, 4, 5]
 mixed = ["text", 42, True, 3.14]
 
-# Accessing items (starting from 0)
-first_fruit = fruits[0]      # "apple"
-last_number = numbers[-1]    # 5 (negative index counts from end)
+# Accessing elements
+print(numbers[0])     # 1
+print(numbers[-1])    # 5 (last element)
 
-# Adding items
-fruits.append("grape")       # Add to end
-fruits.insert(1, "mango")    # Insert at position 1
+# List methods
+numbers.append(6)           # Add to end
+numbers.insert(0, 0)        # Insert at index
+numbers.remove(3)           # Remove first occurrence
+popped = numbers.pop()      # Remove and return last
+numbers.extend([7, 8, 9])   # Add multiple elements
+
+# List slicing
+print(numbers[1:4])   # Elements from index 1 to 3
 \`\`\`
 
-### 5. Dictionaries - Key-Value Pairs
-
+**Tuples**
 \`\`\`python
-# Creating a dictionary
+# Tuples are immutable
+coordinates = (10, 20)
+person = ("Alice", 25, "Engineer")
+
+# Accessing tuple elements
+print(person[0])      # "Alice"
+print(person[-1])     # "Engineer"
+
+# Tuple unpacking
+name, age, job = person
+print(f"{name} is {age} years old")
+\`\`\`
+
+**Sets**
+\`\`\`python
+# Sets contain unique elements
+numbers = {1, 2, 3, 4, 5}
+fruits = {"apple", "banana", "orange"}
+
+# Set operations
+numbers.add(6)
+numbers.remove(1)
+print(3 in numbers)   # True
+
+# Set operations
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+print(set1.union(set2))         # {1, 2, 3, 4, 5}
+print(set1.intersection(set2))  # {3}
+\`\`\`
+
+**Dictionaries**
+\`\`\`python
+# Key-value pairs
 student = {
     "name": "John",
     "age": 20,
-    "grade": "A",
-    "subjects": ["Math", "Science", "English"]
+    "courses": ["Math", "Physics"]
 }
 
 # Accessing values
-student_name = student["name"]        # "John"
-student_age = student.get("age", 0)   # 20 (with default value)
+print(student["name"])          # "John"
+print(student.get("age", 0))    # 20
 
-# Adding/updating values
-student["email"] = "john@email.com"
+# Modifying dictionaries
+student["grade"] = "A"
 student["age"] = 21
+del student["courses"]
+
+# Dictionary methods
+print(student.keys())    # dict_keys(['name', 'age', 'grade'])
+print(student.values())  # dict_values(['John', 21, 'A'])
+print(student.items())   # dict_items([...])
 \`\`\`
 
-### 6. Control Flow - Making Decisions
-
+**Iteration over Collections**
 \`\`\`python
-# If statements
-age = 18
+# List iteration
+fruits = ["apple", "banana", "orange"]
+for fruit in fruits:
+    print(fruit)
 
-if age >= 18:
-    print("You are an adult")
-elif age >= 13:
-    print("You are a teenager")
-else:
-    print("You are a child")
+# Dictionary iteration
+student = {"name": "John", "age": 20}
+for key in student:
+    print(f"{key}: {student[key]}")
 
-# Loops - repeating actions
-# For loop
-for i in range(5):
-    print(f"Count: {i}")
+# Using items()
+for key, value in student.items():
+    print(f"{key}: {value}")
 
-# While loop
-count = 0
-while count < 3:
-    print(f"While count: {count}")
-    count += 1
+# Enumerate for index
+for index, fruit in enumerate(fruits):
+    print(f"{index}: {fruit}")
 \`\`\`
 
-## Python's Philosophy - The Zen of Python
+### ✅ Functions
 
-Python follows these principles:
-- **Simple is better than complex**
-- **Readability counts**
-- **There should be one obvious way to do it**
+**Defining & Calling Functions**
+\`\`\`python
+# Basic function
+def greet():
+    print("Hello!")
 
-## What's Next?
+greet()  # Call the function
 
-In upcoming lessons, you'll learn:
-- More advanced data structures
-- File handling and input/output
-- Error handling with try/except
-- Object-oriented programming
-- Working with external libraries
+# Function with parameters
+def greet_user(name):
+    print(f"Hello, {name}!")
 
-Python's journey from beginner to expert is exciting and rewarding. Let's continue building your Python skills!
+greet_user("Alice")
+
+# Function with return value
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print(result)  # 8
+\`\`\`
+
+**Parameters**
+\`\`\`python
+# Positional parameters
+def describe_pet(name, animal_type):
+    print(f"I have a {animal_type} named {name}")
+
+describe_pet("Max", "dog")
+
+# Keyword parameters
+describe_pet(animal_type="cat", name="Whiskers")
+
+# Default parameters
+def greet_user(name, greeting="Hello"):
+    print(f"{greeting}, {name}!")
+
+greet_user("Alice")           # Hello, Alice!
+greet_user("Bob", "Hi")       # Hi, Bob!
+
+# *args - variable positional arguments
+def sum_all(*numbers):
+    return sum(numbers)
+
+print(sum_all(1, 2, 3, 4))    # 10
+
+# **kwargs - variable keyword arguments
+def display_info(**info):
+    for key, value in info.items():
+        print(f"{key}: {value}")
+
+display_info(name="Alice", age=25, city="New York")
+\`\`\`
+
+---
+
+## 🟡 2. Intermediate (Core Programming)
+*Focus: OOP, file handling, and error handling*
+
+### ✅ Advanced Data Structures
+
+**List Comprehension**
+\`\`\`python
+# Basic list comprehension
+squares = [x**2 for x in range(10)]
+# Instead of:
+squares = []
+for x in range(10):
+    squares.append(x**2)
+
+# With condition
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+
+# Nested comprehension
+matrix = [[i*j for i in range(3)] for j in range(3)]
+\`\`\`
+
+**Dictionary Comprehension**
+\`\`\`python
+# Basic dictionary comprehension
+word_lengths = {word: len(word) for word in ["apple", "banana", "orange"]}
+
+# With condition
+even_squares = {x: x**2 for x in range(10) if x % 2 == 0}
+\`\`\`
+
+**Nested Collections**
+\`\`\`python
+# List of lists (matrix)
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# Dictionary of lists
+grades = {
+    "Alice": [90, 85, 92],
+    "Bob": [78, 82, 80],
+    "Charlie": [95, 90, 88]
+}
+
+# Accessing nested data
+print(matrix[1][2])           # 6
+print(grades["Alice"][0])     # 90
+\`\`\`
+
+### ✅ Functions (Deep)
+
+**Recursion**
+\`\`\`python
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+
+print(factorial(5))  # 120
+
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+\`\`\`
+
+**Lambda Functions**
+\`\`\`python
+# Lambda (anonymous) functions
+square = lambda x: x**2
+print(square(5))  # 25
+
+# Using with map, filter, reduce
+numbers = [1, 2, 3, 4, 5]
+
+# map - apply function to all elements
+squares = list(map(lambda x: x**2, numbers))
+
+# filter - filter elements based on condition
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+
+# reduce - reduce list to single value
+from functools import reduce
+sum_all = reduce(lambda x, y: x + y, numbers)
+\`\`\`
+
+**Higher-Order Functions**
+\`\`\`python
+def apply_operation(numbers, operation):
+    return [operation(x) for x in numbers]
+
+def square(x):
+    return x**2
+
+def cube(x):
+    return x**3
+
+numbers = [1, 2, 3, 4]
+squared = apply_operation(numbers, square)
+cubed = apply_operation(numbers, cube)
+\`\`\`
+
+This comprehensive curriculum takes you from absolute beginner to intermediate Python programmer with hands-on examples and practical applications!
       `,
       duration: "10 min read"
     },
