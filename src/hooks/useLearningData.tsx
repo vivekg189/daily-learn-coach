@@ -52,8 +52,11 @@ export function useLearningData() {
         return;
       }
 
+      console.log('Fetched profile data:', data);
+
       // If no profile exists, create one with default values
       if (!data) {
+        console.log('No profile found, creating new one with default values');
         const { data: newProfile, error: createError } = await supabase
           .from('profiles')
           .insert({
@@ -71,9 +74,33 @@ export function useLearningData() {
           return;
         }
 
+        console.log('Created new profile:', newProfile);
         setProfile(newProfile);
       } else {
-        setProfile(data);
+        // If profile exists but has non-zero values, reset them
+        if (data.total_score !== 0 || data.current_streak !== 0 || data.lessons_completed !== 0) {
+          console.log('Resetting existing profile to default values');
+          const { data: resetProfile, error: resetError } = await supabase
+            .from('profiles')
+            .update({
+              total_score: 0,
+              current_streak: 0,
+              lessons_completed: 0,
+            })
+            .eq('user_id', user.id)
+            .select()
+            .single();
+
+          if (resetError) {
+            console.error('Error resetting profile:', resetError);
+            return;
+          }
+
+          console.log('Reset profile:', resetProfile);
+          setProfile(resetProfile);
+        } else {
+          setProfile(data);
+        }
       }
     } catch (error) {
       console.error('Error fetching profile:', error);
