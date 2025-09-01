@@ -57,7 +57,7 @@ export function QuizComponent({ topic, level, onComplete, onBack }: QuizComponen
         explanation: "The Virtual DOM is a JavaScript representation of the actual DOM that React uses to efficiently update the UI by comparing changes and only updating what's necessary."
       }
     ],
-    "Python Basics": [
+    "Python": [
       {
         question: "Which of the following is a correct way to declare a variable in Python?",
         options: ["var name = 'John'", "let name = 'John'", "name = 'John'", "string name = 'John'"],

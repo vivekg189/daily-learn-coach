@@ -22,7 +22,7 @@ export function LessonViewer({ session, onStartQuiz, onBackToDashboard }: Lesson
         }
       ]
     },
-    "Python Basics": {
+    "Python": {
       lessons: [
         {
           title: "🐍 Introduction to Python & Setup",
@@ -71,7 +71,7 @@ export function LessonViewer({ session, onStartQuiz, onBackToDashboard }: Lesson
               </p>
               <ul className="text-left max-w-md mx-auto space-y-1 text-muted-foreground">
                 <li>• React Fundamentals</li>
-                <li>• Python Basics</li>
+                <li>• Python</li>
                 <li>• Machine Learning</li>
               </ul>
               <Button onClick={onBackToDashboard} className="mt-4">
