@@ -1,9 +1,14 @@
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { ArrowLeft, CheckCircle, XCircle, Timer } from "lucide-react";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { CheckCircle, XCircle, ArrowRight } from 'lucide-react';
+import { LearningSession } from '@/hooks/useLearningData';
+
+interface QuizComponentProps {
+  session: LearningSession;
+  onQuizComplete: (score: number, totalQuestions: number, answers: any[]) => void;
+  onBackToDashboard: () => void;
+}
 
 interface QuizQuestion {
   question: string;
@@ -12,52 +17,41 @@ interface QuizQuestion {
   explanation: string;
 }
 
-interface QuizComponentProps {
-  topic: string;
-  level: "beginner" | "intermediate" | "expert";
-  onComplete: (score: number, totalQuestions: number, answers: any) => void;
-  onBack: () => void;
+interface TopicQuizzes {
+  beginner: QuizQuestion[];
+  intermediate: QuizQuestion[];
+  expert: QuizQuestion[];
 }
 
-export function QuizComponent({ topic, level, onComplete, onBack }: QuizComponentProps) {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [showResult, setShowResult] = useState(false);
-  const [userAnswers, setUserAnswers] = useState<number[]>([]);
-  const [quizComplete, setQuizComplete] = useState(false);
-
-  const mockQuestions: Record<string, QuizQuestion[]> = {
-    "React Fundamentals": [
+const quizQuestions: Record<string, TopicQuizzes> = {
+  "React Fundamentals": {
+    beginner: [
       {
         question: "What does JSX stand for?",
-        options: ["JavaScript XML", "Java Syntax Extension", "JSON XML", "JavaScript Extension"],
+        options: ["JavaScript XML", "Java Syntax Extension", "JavaScript Extension", "Java XML"],
         correctAnswer: 0,
-        explanation: "JSX stands for JavaScript XML. It's a syntax extension for JavaScript that allows you to write HTML-like code in your React components."
-      },
-      {
-        question: "Which of the following is the correct way to create a React component?",
-        options: [
-          "function MyComponent() { return <div>Hello</div>; }",
-          "const MyComponent = <div>Hello</div>;",
-          "class MyComponent extends Component { render() { return 'Hello'; } }",
-          "MyComponent() { return <div>Hello</div>; }"
-        ],
-        correctAnswer: 0,
-        explanation: "A functional component is created by defining a function that returns JSX. This is the most common and recommended way in modern React."
-      },
-      {
-        question: "What is the Virtual DOM?",
-        options: [
-          "A real DOM element",
-          "A JavaScript representation of the actual DOM",
-          "A CSS framework",
-          "A database for React apps"
-        ],
-        correctAnswer: 1,
-        explanation: "The Virtual DOM is a JavaScript representation of the actual DOM that React uses to efficiently update the UI by comparing changes and only updating what's necessary."
+        explanation: "JSX stands for JavaScript XML. It allows you to write HTML-like code in your React components."
       }
     ],
-    "Python": [
+    intermediate: [
+      {
+        question: "Which hook is used for side effects?",
+        options: ["useState", "useEffect", "useContext", "useReducer"],
+        correctAnswer: 1,
+        explanation: "useEffect is used to perform side effects in functional components."
+      }
+    ],
+    expert: [
+      {
+        question: "What is React.memo used for?",
+        options: ["State management", "Performance optimization", "Routing", "Form handling"],
+        correctAnswer: 1,
+        explanation: "React.memo is used for performance optimization by preventing unnecessary re-renders."
+      }
+    ]
+  },
+  "Python": {
+    beginner: [
       {
         question: "Which of the following is a correct way to declare a variable in Python?",
         options: ["var name = 'John'", "let name = 'John'", "name = 'John'", "string name = 'John'"],
@@ -66,227 +60,216 @@ export function QuizComponent({ topic, level, onComplete, onBack }: QuizComponen
       },
       {
         question: "What data type is the value 3.14?",
-        options: ["Integer", "Float", "String", "Boolean"],
+        options: ["int", "float", "string", "boolean"],
         correctAnswer: 1,
         explanation: "3.14 is a floating-point number (float) because it contains a decimal point."
       },
       {
-        question: "How do you create a list in Python?",
-        options: ["list = {1, 2, 3}", "list = [1, 2, 3]", "list = (1, 2, 3)", "list = <1, 2, 3>"],
-        correctAnswer: 1,
-        explanation: "Lists in Python are created using square brackets []. Curly brackets {} create sets or dictionaries, and parentheses () create tuples."
+        question: "How do you start a comment in Python?",
+        options: ["//", "/* */", "#", "<!--"],
+        correctAnswer: 2,
+        explanation: "Comments in Python start with the # symbol."
       }
     ],
-    "Machine Learning": [
+    intermediate: [
       {
-        question: "What is the main purpose of an activation function in a neural network?",
+        question: "What is a list comprehension?",
         options: [
-          "To initialize weights",
-          "To introduce non-linearity",
-          "To reduce overfitting",
-          "To normalize inputs"
+          "A way to sort lists",
+          "A concise way to create lists",
+          "A method to delete lists",
+          "A type of list"
         ],
         correctAnswer: 1,
-        explanation: "Activation functions introduce non-linearity into neural networks, allowing them to learn complex patterns and solve non-linear problems."
+        explanation: "List comprehension is a concise way to create lists in Python."
       },
       {
-        question: "What happens during backpropagation?",
+        question: "Which keyword is used to define a class in Python?",
+        options: ["def", "class", "function", "object"],
+        correctAnswer: 1,
+        explanation: "The 'class' keyword is used to define a class in Python."
+      }
+    ],
+    expert: [
+      {
+        question: "What is a decorator in Python?",
         options: [
-          "Data flows forward through the network",
-          "Weights are randomly initialized",
-          "Gradients are calculated and weights are updated",
-          "The model makes predictions"
+          "A design pattern",
+          "A function that modifies another function",
+          "A type of class",
+          "A module"
         ],
-        correctAnswer: 2,
-        explanation: "During backpropagation, the network calculates gradients of the loss function with respect to the weights and updates the weights to minimize the loss."
+        correctAnswer: 1,
+        explanation: "A decorator is a function that takes another function and extends its behavior."
       },
       {
-        question: "Which layer typically comes first in a neural network?",
-        options: ["Output layer", "Hidden layer", "Input layer", "Activation layer"],
-        correctAnswer: 2,
-        explanation: "The input layer comes first in a neural network. It receives the raw data that will be processed by the subsequent hidden layers."
+        question: "What does 'yield' keyword do in Python?",
+        options: [
+          "Stops the program",
+          "Creates a generator",
+          "Raises an exception",
+          "Imports a module"
+        ],
+        correctAnswer: 1,
+        explanation: "The 'yield' keyword is used to create generators."
       }
     ]
-  };
+  }
+};
 
-  const questions = mockQuestions[topic] || [
-    {
-      question: `What is a key concept in ${topic}?`,
-      options: ["Option A", "Option B", "Option C", "Option D"],
-      correctAnswer: 0,
-      explanation: "This is a sample question for your custom topic."
-    }
-  ];
+export default function QuizComponent({ session, onQuizComplete, onBackToDashboard }: QuizComponentProps) {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [answers, setAnswers] = useState<any[]>([]);
+  const [score, setScore] = useState(0);
 
-  const handleAnswerSelect = (answerIndex: number) => {
-    setSelectedAnswer(answerIndex);
-  };
-
-  const handleNext = () => {
-    if (selectedAnswer === null) return;
-
-    const newAnswers = [...userAnswers, selectedAnswer];
-    setUserAnswers(newAnswers);
-    setShowResult(true);
-
-    setTimeout(() => {
-      if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-        setSelectedAnswer(null);
-        setShowResult(false);
-      } else {
-        // Quiz complete
-        const score = Math.round((newAnswers.filter((answer, index) => answer === questions[index].correctAnswer).length / questions.length) * 100);
-        setQuizComplete(true);
-        setTimeout(() => onComplete(score, questions.length, newAnswers), 2000);
-      }
-    }, 2000);
-  };
-
-  if (quizComplete) {
-    const score = Math.round((userAnswers.filter((answer, index) => answer === questions[index].correctAnswer).length / questions.length) * 100);
-    
+  const topicQuestions = quizQuestions[session.topic];
+  const levelQuestions = topicQuestions?.[session.level];
+  
+  if (!levelQuestions || levelQuestions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-surface p-4 flex items-center justify-center">
-        <Card className="w-full max-w-md shadow-elevated text-center">
-          <CardContent className="p-6">
-            <div className="mb-4">
-              {score >= 70 ? (
-                <CheckCircle className="h-16 w-16 text-learning-success mx-auto mb-4" />
-              ) : (
-                <XCircle className="h-16 w-16 text-destructive mx-auto mb-4" />
-              )}
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Quiz Complete!</h2>
-            <p className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
-              {score}%
-            </p>
+      <div className="min-h-screen bg-gradient-surface p-4">
+        <Card className="shadow-card">
+          <CardContent className="p-6 text-center">
+            <h2 className="text-xl font-semibold mb-4">Quiz Not Available</h2>
             <p className="text-muted-foreground mb-4">
-              {score >= 90 ? "Excellent work!" : score >= 70 ? "Great job!" : "Keep practicing!"}
+              The quiz for {session.level} level "{session.topic}" is not available yet.
             </p>
-            <div className="text-sm text-muted-foreground">
-              {userAnswers.filter((answer, index) => answer === questions[index].correctAnswer).length} out of {questions.length} correct
-            </div>
+            <Button onClick={onBackToDashboard} className="mt-4">
+              Back to Dashboard
+            </Button>
           </CardContent>
         </Card>
       </div>
     );
   }
 
-  const currentQ = questions[currentQuestion];
-  const isCorrect = selectedAnswer === currentQ.correctAnswer;
+  const questions = levelQuestions;
+  const currentQuestion = questions[currentQuestionIndex];
+
+  const handleAnswerSelect = (answerIndex: number) => {
+    if (showAnswer) return;
+    setSelectedAnswer(answerIndex);
+  };
+
+  const handleNextQuestion = () => {
+    if (selectedAnswer === null) return;
+
+    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    const newAnswer = {
+      question: currentQuestion.question,
+      selectedAnswer,
+      correctAnswer: currentQuestion.correctAnswer,
+      isCorrect,
+    };
+
+    const newAnswers = [...answers, newAnswer];
+    setAnswers(newAnswers);
+
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswer(null);
+      setShowAnswer(false);
+    } else {
+      // Quiz completed
+      const finalScore = isCorrect ? score + 1 : score;
+      onQuizComplete(finalScore, questions.length, newAnswers);
+    }
+  };
+
+  const handleShowAnswer = () => {
+    setShowAnswer(true);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-surface p-4">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <Button 
-            variant="ghost" 
-            onClick={onBack}
-            className="flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Lesson
-          </Button>
-          
-          <div className="flex items-center gap-4">
-            <Badge variant="secondary" className="capitalize">
-              {level}
-            </Badge>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Timer className="h-4 w-4" />
-              Quiz Mode
-            </div>
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-foreground mb-2">{session.topic} Quiz</h1>
+          <div className="flex items-center justify-between">
+            <span className="text-primary font-medium">{session.level.charAt(0).toUpperCase() + session.level.slice(1)} Level</span>
+            <span className="text-muted-foreground">
+              Question {currentQuestionIndex + 1} of {questions.length}
+            </span>
           </div>
         </div>
 
-        {/* Progress */}
-        <Card className="mb-6 shadow-card">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="font-semibold">{topic} Quiz</h2>
-              <div className="text-sm text-muted-foreground">
-                Question {currentQuestion + 1} of {questions.length}
-              </div>
+        {/* Question Card */}
+        <Card className="shadow-card mb-6">
+          <CardContent className="p-6">
+            <h2 className="text-xl font-semibold mb-6">{currentQuestion.question}</h2>
+            
+            <div className="space-y-3">
+              {currentQuestion.options.map((option, index) => (
+                <button
+                  key={index}
+                  className={`w-full p-4 text-left rounded-lg border transition-colors ${
+                    selectedAnswer === index
+                      ? showAnswer
+                        ? index === currentQuestion.correctAnswer
+                          ? 'bg-success/20 border-success text-success'
+                          : 'bg-destructive/20 border-destructive text-destructive'
+                        : 'bg-primary/20 border-primary text-primary'
+                      : showAnswer && index === currentQuestion.correctAnswer
+                      ? 'bg-success/20 border-success text-success'
+                      : 'bg-card border-border hover:bg-muted'
+                  }`}
+                  onClick={() => handleAnswerSelect(index)}
+                  disabled={showAnswer}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>{option}</span>
+                    {showAnswer && (
+                      <>
+                        {index === currentQuestion.correctAnswer && (
+                          <CheckCircle className="h-5 w-5 text-success" />
+                        )}
+                        {selectedAnswer === index && index !== currentQuestion.correctAnswer && (
+                          <XCircle className="h-5 w-5 text-destructive" />
+                        )}
+                      </>
+                    )}
+                  </div>
+                </button>
+              ))}
             </div>
-            <Progress 
-              value={((currentQuestion + 1) / questions.length) * 100} 
-              className="h-2"
-            />
-          </CardContent>
-        </Card>
 
-        {/* Question */}
-        <Card className="mb-6 shadow-card">
-          <CardHeader>
-            <CardTitle className="text-xl">
-              {currentQ.question}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {currentQ.options.map((option, index) => (
-              <Button
-                key={index}
-                variant={selectedAnswer === index ? "default" : "outline"}
-                className={`w-full text-left justify-start p-4 h-auto ${
-                  showResult
-                    ? index === currentQ.correctAnswer
-                      ? "bg-learning-success text-white"
-                      : selectedAnswer === index && index !== currentQ.correctAnswer
-                      ? "bg-destructive text-white"
-                      : ""
-                    : selectedAnswer === index
-                    ? "bg-gradient-primary text-white"
-                    : ""
-                }`}
-                onClick={() => !showResult && handleAnswerSelect(index)}
-                disabled={showResult}
-              >
-                <span className="font-medium mr-3">
-                  {String.fromCharCode(65 + index)}.
-                </span>
-                {option}
-              </Button>
-            ))}
-          </CardContent>
-        </Card>
-
-        {/* Result Explanation */}
-        {showResult && (
-          <Card className="mb-6 shadow-card">
-            <CardContent className="p-4">
-              <div className="flex items-start gap-3">
-                {isCorrect ? (
-                  <CheckCircle className="h-5 w-5 text-learning-success mt-0.5" />
-                ) : (
-                  <XCircle className="h-5 w-5 text-destructive mt-0.5" />
-                )}
-                <div>
-                  <p className="font-semibold mb-2">
-                    {isCorrect ? "Correct!" : "Incorrect"}
-                  </p>
-                  <p className="text-muted-foreground">
-                    {currentQ.explanation}
-                  </p>
-                </div>
+            {showAnswer && (
+              <div className="mt-6 p-4 bg-muted rounded-lg">
+                <h3 className="font-semibold mb-2">Explanation:</h3>
+                <p className="text-muted-foreground">{currentQuestion.explanation}</p>
               </div>
-            </CardContent>
-          </Card>
-        )}
+            )}
+          </CardContent>
+        </Card>
 
-        {/* Next Button */}
-        {!showResult && (
-          <div className="flex justify-end">
-            <Button 
-              onClick={handleNext}
-              disabled={selectedAnswer === null}
-              className="bg-gradient-primary hover:opacity-90 shadow-button"
-            >
-              {currentQuestion === questions.length - 1 ? "Finish Quiz" : "Next Question"}
+        {/* Navigation */}
+        <div className="flex gap-4">
+          <Button variant="outline" onClick={onBackToDashboard}>
+            Back to Dashboard
+          </Button>
+          
+          <div className="flex-1" />
+          
+          {!showAnswer && selectedAnswer !== null && (
+            <Button onClick={handleShowAnswer}>
+              Show Answer
             </Button>
-          </div>
-        )}
+          )}
+          
+          {showAnswer && (
+            <Button onClick={handleNextQuestion}>
+              {currentQuestionIndex < questions.length - 1 ? "Next Question" : "Complete Quiz"}
+              <ArrowRight className="h-4 w-4 ml-2" />
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
