@@ -52,7 +52,29 @@ export function useLearningData() {
         return;
       }
 
-      setProfile(data);
+      // If no profile exists, create one with default values
+      if (!data) {
+        const { data: newProfile, error: createError } = await supabase
+          .from('profiles')
+          .insert({
+            user_id: user.id,
+            display_name: user.email?.split('@')[0] || 'User',
+            total_score: 0,
+            current_streak: 0,
+            lessons_completed: 0,
+          })
+          .select()
+          .single();
+
+        if (createError) {
+          console.error('Error creating profile:', createError);
+          return;
+        }
+
+        setProfile(newProfile);
+      } else {
+        setProfile(data);
+      }
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
