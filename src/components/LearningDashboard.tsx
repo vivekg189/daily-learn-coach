@@ -6,8 +6,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Trophy, Target, Zap, Brain, Star, LogOut, Loader2 } from "lucide-react";
-import { QuizComponent } from "./QuizComponent";
-import { LessonViewer } from "./LessonViewer";
+import QuizComponent from "./QuizComponent";
+import LessonViewer from "./LessonViewer";
 import { useAuth } from "@/hooks/useAuth";
 import { useLearningData, LearningSession } from "@/hooks/useLearningData";
 
@@ -95,6 +95,7 @@ export function LearningDashboard() {
       <LessonViewer
         session={session}
         onStartQuiz={() => setCurrentView("quiz")}
+        onLessonComplete={() => setCurrentView("quiz")}
         onBackToDashboard={() => setCurrentView("dashboard")}
       />
     );
@@ -103,10 +104,9 @@ export function LearningDashboard() {
   if (currentView === "quiz" && session) {
     return (
       <QuizComponent
-        topic={session.topic}
-        level={session.level}
-        onComplete={handleQuizComplete}
-        onBack={() => setCurrentView("lesson")}
+        session={session}
+        onQuizComplete={handleQuizComplete}
+        onBackToDashboard={() => setCurrentView("dashboard")}
       />
     );
   }
