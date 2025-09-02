@@ -53,65 +53,98 @@ const quizQuestions: Record<string, TopicQuizzes> = {
   "Python": {
     beginner: [
       {
-        question: "Which of the following is a correct way to declare a variable in Python?",
-        options: ["var name = 'John'", "let name = 'John'", "name = 'John'", "string name = 'John'"],
-        correctAnswer: 2,
-        explanation: "In Python, you declare variables by simply assigning a value to a name without any special keywords."
+        question: "Who created the Python programming language?",
+        options: ["Guido van Rossum", "James Gosling", "Brendan Eich", "Dennis Ritchie"],
+        correctAnswer: 0,
+        explanation: "Python was created by Guido van Rossum in 1991."
       },
       {
-        question: "What data type is the value 3.14?",
-        options: ["int", "float", "string", "boolean"],
+        question: "What is the main design principle of Python?",
+        options: ["Speed", "Code readability", "Memory efficiency", "Compilation"],
         correctAnswer: 1,
-        explanation: "3.14 is a floating-point number (float) because it contains a decimal point."
+        explanation: "Python is designed with an emphasis on code readability and allows programmers to express concepts in fewer lines of code."
       },
       {
-        question: "How do you start a comment in Python?",
-        options: ["//", "/* */", "#", "<!--"],
+        question: "Which command checks if Python is installed correctly?",
+        options: ["python -check", "python --version", "python -v", "check python"],
+        correctAnswer: 1,
+        explanation: "The command 'python --version' is used to verify Python installation and check the installed version."
+      },
+      {
+        question: "How do you create a variable in Python?",
+        options: ["var name = 'John'", "name = 'John'", "string name = 'John'", "let name = 'John'"],
+        correctAnswer: 1,
+        explanation: "In Python, you create variables by simply assigning a value: name = 'John'"
+      },
+      {
+        question: "What does Python use to define code blocks?",
+        options: ["Braces { }", "Parentheses ( )", "Indentation", "Semicolons ;"],
         correctAnswer: 2,
-        explanation: "Comments in Python start with the # symbol."
+        explanation: "Python uses indentation to define code blocks, unlike many other languages that use braces."
       }
     ],
     intermediate: [
       {
-        question: "What is a list comprehension?",
-        options: [
-          "A way to sort lists",
-          "A concise way to create lists",
-          "A method to delete lists",
-          "A type of list"
-        ],
-        correctAnswer: 1,
-        explanation: "List comprehension is a concise way to create lists in Python."
+        question: "Which data structure is ordered and mutable in Python?",
+        options: ["Tuple", "Set", "List", "String"],
+        correctAnswer: 2,
+        explanation: "Lists are ordered, mutable collections that can store multiple items and can be modified after creation."
       },
       {
-        question: "Which keyword is used to define a class in Python?",
-        options: ["def", "class", "function", "object"],
+        question: "How do you access a value in a dictionary?",
+        options: ["dict.key", "dict[key]", "dict->key", "dict(key)"],
         correctAnswer: 1,
-        explanation: "The 'class' keyword is used to define a class in Python."
+        explanation: "Dictionary values are accessed using square brackets with the key: dict[key]"
+      },
+      {
+        question: "What is tuple unpacking?",
+        options: ["Removing items from tuple", "Converting tuple to list", "Assigning tuple values to variables", "Sorting tuple items"],
+        correctAnswer: 2,
+        explanation: "Tuple unpacking assigns individual tuple values to separate variables: x, y = coordinates"
+      },
+      {
+        question: "Which statement is used for error handling in Python?",
+        options: ["catch-throw", "try-except", "error-handle", "catch-error"],
+        correctAnswer: 1,
+        explanation: "Python uses try-except blocks for error handling and exception management."
+      },
+      {
+        question: "What is a list comprehension?",
+        options: ["A way to sort lists", "A concise way to create lists", "A method to delete lists", "A type of loop"],
+        correctAnswer: 1,
+        explanation: "List comprehension is a concise way to create lists: [x**2 for x in range(10)]"
       }
     ],
     expert: [
       {
-        question: "What is a decorator in Python?",
-        options: [
-          "A design pattern",
-          "A function that modifies another function",
-          "A type of class",
-          "A module"
-        ],
+        question: "What is the purpose of the __init__ method in a Python class?",
+        options: ["To delete objects", "To initialize object attributes", "To copy objects", "To compare objects"],
         correctAnswer: 1,
-        explanation: "A decorator is a function that takes another function and extends its behavior."
+        explanation: "The __init__ method is the constructor that initializes object attributes when an instance is created."
       },
       {
-        question: "What does 'yield' keyword do in Python?",
-        options: [
-          "Stops the program",
-          "Creates a generator",
-          "Raises an exception",
-          "Imports a module"
-        ],
+        question: "What does the 'yield' keyword do in Python?",
+        options: ["Stops the program", "Creates a generator", "Raises an exception", "Imports a module"],
         correctAnswer: 1,
-        explanation: "The 'yield' keyword is used to create generators."
+        explanation: "The 'yield' keyword is used to create generator functions that can pause and resume execution."
+      },
+      {
+        question: "What is a decorator in Python?",
+        options: ["A design pattern", "A function that modifies another function", "A type of class", "A module"],
+        correctAnswer: 1,
+        explanation: "A decorator is a function that takes another function and extends or modifies its behavior."
+      },
+      {
+        question: "What happens when you use 'with' statement in Python?",
+        options: ["Creates a loop", "Defines a function", "Manages context automatically", "Imports a library"],
+        correctAnswer: 2,
+        explanation: "The 'with' statement is used for context management, automatically handling resource cleanup."
+      },
+      {
+        question: "What is the difference between map() and list comprehension?",
+        options: ["No difference", "map() returns iterator, list comprehension returns list", "map() is faster", "list comprehension is older"],
+        correctAnswer: 1,
+        explanation: "map() returns an iterator while list comprehension returns a list directly. Both can achieve similar results."
       }
     ]
   }

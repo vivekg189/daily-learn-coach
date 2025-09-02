@@ -61,52 +61,282 @@ const lessonContent: Record<string, TopicContent> = {
     beginner: {
       lessons: [
         {
-          title: "🐍 Introduction to Python & Setup",
-          content: "# 🐍 Introduction to Python & Setup\n\n## What is Python?\n\nPython is a **high-level, interpreted programming language** created by Guido van Rossum in 1991. It's designed with an emphasis on **code readability** and allows programmers to express concepts in **fewer lines of code**.\n\n## Key Features of Python\n\n🎯 **Simple & Easy to Learn**\n- Clean, readable syntax similar to English\n- No complex punctuation like braces `{}`\n- Uses indentation to define code blocks\n\n🚀 **Versatile Applications**\n- **Web Development** (Django, Flask)\n- **Data Science** (Pandas, NumPy)\n- **Machine Learning** (TensorFlow, Scikit-learn)\n- **Automation & Scripting**\n- **Desktop Applications**\n\n💡 **Why Learn Python?**\n- **High Demand**: One of most sought-after programming skills\n- **Large Community**: Millions of developers worldwide\n- **Extensive Libraries**: Pre-built solutions for almost everything\n- **Beginner Friendly**: Perfect first programming language\n\n## Installation & Setup\n\n### Step 1: Download Python\n- Visit [python.org](https://python.org)\n- Download latest version (Python 3.x)\n- ✅ **Important**: Check \"Add Python to PATH\" during installation\n\n### Step 2: Verify Installation\nOpen Command Prompt/Terminal and type:\n```bash\npython --version\n```\n\n### Step 3: Choose an IDE\n- **IDLE**: Comes with Python (good for beginners)\n- **VS Code**: Lightweight with Python extension\n- **PyCharm**: Full-featured Python IDE\n\n## Your First Python Program\n\n```python\n# This is a comment in Python\nprint(\"Hello, World!\")\nprint(\"Welcome to Python Programming!\")\n```\n\n**Output:**\n```\nHello, World!\nWelcome to Python Programming!\n```\n\n## Python Philosophy - The Zen of Python\n\n```python\nimport this\n```\n\nKey principles:\n- **Simple is better than complex**\n- **Readability counts**\n- **There should be one obvious way to do it**",
-          duration: "10 min read"
-        },
-        {
-          title: "Variables & Data Types",
-          content: "# Variables & Data Types\n\n## Understanding Variables\n\nIn Python, a **variable** is like a container that stores data. Unlike other languages, you don't need to declare the type - Python figures it out automatically!\n\n### Creating Variables\n```python\n# No special keywords needed!\nname = \"Alice\"\nage = 25\nheight = 5.6\nis_student = True\n```\n\n## Python Data Types\n\n### 1. Numeric Types\n**Integer (int)**\n```python\nage = 25\ncount = -10\nbig_number = 1000000\n```\n\n**Float (float)**\n```python\nheight = 5.9\npi = 3.14159\ntemperature = -10.5\n```\n\n### 2. Text Type\n**String (str)**\n```python\nfirst_name = \"John\"\nlast_name = 'Doe'\n```\n\n### 3. Boolean Type\n**Boolean (bool)**\n```python\nis_active = True\nis_complete = False\n```",
-          duration: "12 min read"
-        },
-        {
-          title: "Control Structures & Loops",
-          content: "# Control Structures & Loops\n\n## Conditional Statements\n\n### The if Statement\n```python\nage = 18\n\nif age >= 18:\n    print(\"You are eligible to vote!\")\n```\n\n### if-else Statement\n```python\ntemperature = 25\n\nif temperature > 30:\n    print(\"It's hot outside!\")\nelse:\n    print(\"The weather is pleasant.\")\n```\n\n## Loops\n\n### The while Loop\n```python\ncount = 1\nwhile count <= 5:\n    print(f\"Count: {count}\")\n    count += 1\n```\n\n### The for Loop\n```python\nfor i in range(5):\n    print(i)\n```",
-          duration: "15 min read"
-        },
-        {
-          title: "Data Structures & Functions",
-          content: "# Data Structures & Functions\n\n## Lists\n```python\nfruits = [\"apple\", \"banana\", \"orange\"]\nprint(fruits[0])  # \"apple\"\nfruits.append(\"grape\")\n```\n\n## Dictionaries\n```python\nstudent = {\n    \"name\": \"Alice\",\n    \"age\": 20,\n    \"grade\": \"A\"\n}\nprint(student[\"name\"])  # \"Alice\"\n```\n\n## Functions\n```python\ndef greet(name):\n    return f\"Hello, {name}!\"\n\nresult = greet(\"World\")\nprint(result)  # \"Hello, World!\"\n```",
-          duration: "18 min read"
+          title: "Introduction to Python & Setup",
+          duration: "10 min read",
+          content: `What is Python?
+
+Python is a high-level, interpreted programming language created by Guido van Rossum in 1991. It's designed with an emphasis on code readability and allows programmers to express concepts in fewer lines of code.
+
+Key Features of Python
+
+Simple & Easy to Learn
+- Clean, readable syntax similar to English
+- No complex punctuation like braces
+- Uses indentation to define code blocks
+
+Versatile Applications
+- Web Development (Django, Flask)
+- Data Science (Pandas, NumPy)
+- Machine Learning (TensorFlow, Scikit-learn)
+- Automation & Scripting
+- Desktop Applications
+
+Why Learn Python?
+- High Demand: One of most sought-after programming skills
+- Large Community: Millions of developers worldwide
+- Extensive Libraries: Pre-built solutions for almost everything
+- Beginner Friendly: Perfect first programming language
+
+Installation & Setup
+
+Step 1: Download Python
+- Visit python.org
+- Download latest version (Python 3.x)
+- Important: Check "Add Python to PATH" during installation
+
+Step 2: Verify Installation
+Open Command Prompt/Terminal and type:
+python --version
+
+Step 3: Choose an IDE
+- IDLE: Comes with Python (good for beginners)
+- VS Code: Lightweight with Python extension
+- PyCharm: Full-featured Python IDE
+
+Your First Python Program
+
+print("Hello, World!")
+print("Welcome to Python Programming!")
+
+Output:
+Hello, World!
+Welcome to Python Programming!
+
+Python Philosophy
+
+Key principles:
+- Simple is better than complex
+- Readability counts
+- There should be one obvious way to do it
+
+Basic Python Syntax
+
+Variables in Python:
+name = "John"
+age = 25
+height = 5.9
+
+Python uses indentation to group code:
+if age > 18:
+    print("You are an adult")
+else:
+    print("You are a minor")`
         }
       ]
     },
     intermediate: {
       lessons: [
         {
-          title: "Advanced Data Structures",
-          content: "# Advanced Data Structures\n\n## List Comprehensions\n```python\nsquares = [x**2 for x in range(10)]\neven_squares = [x**2 for x in range(10) if x % 2 == 0]\n```\n\n## Sets and Tuples\n```python\n# Sets - unique elements\nunique_numbers = {1, 2, 3, 3, 4}  # {1, 2, 3, 4}\n\n# Tuples - immutable sequences\ncoordinates = (10, 20)\nx, y = coordinates  # Tuple unpacking\n```",
-          duration: "15 min read"
-        },
-        {
-          title: "Object-Oriented Programming",
-          content: "# Object-Oriented Programming\n\n## Classes and Objects\n```python\nclass Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n    \n    def bark(self):\n        return f\"{self.name} says Woof!\"\n\nmy_dog = Dog(\"Buddy\", \"Labrador\")\nprint(my_dog.bark())\n```\n\n## Inheritance\n```python\nclass Animal:\n    def speak(self):\n        pass\n\nclass Cat(Animal):\n    def speak(self):\n        return \"Meow!\"\n```",
-          duration: "20 min read"
+          title: "Data Structures and Control Flow",
+          duration: "15 min read",
+          content: `Python Data Structures
+
+Lists - Ordered, mutable collections
+fruits = ["apple", "banana", "orange"]
+fruits.append("grape")
+print(fruits[0])  # apple
+
+Dictionaries - Key-value pairs
+person = {
+    "name": "Alice",
+    "age": 30,
+    "city": "New York"
+}
+print(person["name"])  # Alice
+
+Tuples - Ordered, immutable collections
+coordinates = (10, 20)
+x, y = coordinates  # unpacking
+
+Sets - Unordered, unique elements
+numbers = {1, 2, 3, 4, 5}
+numbers.add(6)
+
+Control Flow Statements
+
+If-elif-else statements:
+score = 85
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+
+For loops:
+for fruit in fruits:
+    print(fruit)
+
+for i in range(5):
+    print(i)  # prints 0, 1, 2, 3, 4
+
+While loops:
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+List Comprehensions
+
+Simple list comprehension:
+squares = [x**2 for x in range(10)]
+
+With condition:
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+
+Functions
+
+Defining functions:
+def greet(name):
+    return f"Hello, {name}!"
+
+def calculate_area(length, width):
+    return length * width
+
+result = greet("Python")
+area = calculate_area(5, 3)
+
+Error Handling
+
+Try-except blocks:
+try:
+    number = int(input("Enter a number: "))
+    result = 10 / number
+    print(result)
+except ValueError:
+    print("Please enter a valid number")
+except ZeroDivisionError:
+    print("Cannot divide by zero")`
         }
       ]
     },
     expert: {
       lessons: [
         {
-          title: "Decorators & Context Managers",
-          content: "# Decorators & Context Managers\n\n## Decorators\n```python\ndef timer_decorator(func):\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        print(f\"Execution time: {time.time() - start_time}\")\n        return result\n    return wrapper\n\n@timer_decorator\ndef slow_function():\n    time.sleep(1)\n    return \"Done!\"\n```\n\n## Context Managers\n```python\nwith open('file.txt', 'r') as f:\n    content = f.read()\n# File automatically closed\n```",
-          duration: "25 min read"
-        },
-        {
-          title: "Generators & Async Programming",
-          content: "# Generators & Async Programming\n\n## Generators\n```python\ndef fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        yield a\n        a, b = b, a + b\n\nfor num in fibonacci(10):\n    print(num)\n```\n\n## Async Programming\n```python\nimport asyncio\n\nasync def fetch_data():\n    await asyncio.sleep(1)\n    return \"Data fetched!\"\n\nasync def main():\n    result = await fetch_data()\n    print(result)\n```",
-          duration: "30 min read"
+          title: "Advanced Python Concepts",
+          duration: "20 min read",
+          content: `Object-Oriented Programming
+
+Classes and Objects:
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+        self.speed = 0
+    
+    def accelerate(self, amount):
+        self.speed += amount
+    
+    def brake(self, amount):
+        self.speed = max(0, self.speed - amount)
+
+my_car = Car("Toyota", "Camry")
+my_car.accelerate(50)
+
+Inheritance:
+class ElectricCar(Car):
+    def __init__(self, brand, model, battery_capacity):
+        super().__init__(brand, model)
+        self.battery_capacity = battery_capacity
+    
+    def charge(self, amount):
+        print(f"Charging {amount} kWh")
+
+Decorators
+
+Function decorators:
+def timer(func):
+    import time
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"Function took {end - start} seconds")
+        return result
+    return wrapper
+
+@timer
+def slow_function():
+    import time
+    time.sleep(1)
+    return "Done"
+
+Generators
+
+Generator functions:
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+# Usage
+fib = fibonacci()
+for _ in range(10):
+    print(next(fib))
+
+Generator expressions:
+squares = (x**2 for x in range(1000000))
+
+Context Managers
+
+Using with statements:
+with open("file.txt", "r") as file:
+    content = file.read()
+    # file automatically closed
+
+Custom context manager:
+class DatabaseConnection:
+    def __enter__(self):
+        print("Connecting to database")
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("Closing database connection")
+
+Lambda Functions and Functional Programming
+
+Lambda functions:
+square = lambda x: x**2
+add = lambda x, y: x + y
+
+Map, filter, reduce:
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, numbers))
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+
+from functools import reduce
+sum_all = reduce(lambda x, y: x + y, numbers)
+
+Advanced Data Structures
+
+Collections module:
+from collections import defaultdict, Counter, deque
+
+# defaultdict
+dd = defaultdict(list)
+dd["key"].append("value")
+
+# Counter
+counter = Counter("hello world")
+print(counter)  # Counter({'l': 3, 'o': 2, ...})
+
+# deque
+queue = deque([1, 2, 3])
+queue.appendleft(0)
+queue.append(4)`
         }
       ]
     }
