@@ -17,495 +17,337 @@ interface LessonContent {
   duration: string;
 }
 
-interface LevelContent {
+interface TopicContent {
   lessons: LessonContent[];
 }
 
-interface TopicContent {
-  beginner: LevelContent;
-  intermediate: LevelContent;
-  expert: LevelContent;
-}
-
 const lessonContent: Record<string, TopicContent> = {
-  "React Fundamentals": {
-    beginner: {
-      lessons: [
-        {
-          title: "Understanding JSX and Components",
-          content: "# Understanding JSX and Components\n\nJSX (JavaScript XML) is a syntax extension for JavaScript that lets you write HTML-like code in your React components.\n\n## What is JSX?\n\nJSX allows you to describe what your UI should look like by combining JavaScript with HTML-like syntax.\n\n## Key Concepts:\n\n1. **Components are Functions**: In modern React, components are just JavaScript functions that return JSX\n2. **Props**: Components can receive data through props (properties)\n3. **State**: Components can manage their own internal state\n4. **Virtual DOM**: React uses a virtual representation of the DOM for efficient updates\n\n## Best Practices:\n\n- Always return a single parent element or use React Fragments\n- Use camelCase for HTML attributes (className instead of class)\n- Close all tags, even self-closing ones\n- Keep components small and focused on a single responsibility",
-          duration: "8 min read"
-        }
-      ]
-    },
-    intermediate: {
-      lessons: [
-        {
-          title: "Advanced React Hooks",
-          content: "# Advanced React Hooks\n\n## useEffect Hook\n\nThe useEffect hook lets you perform side effects in function components.\n\n## useMemo and useCallback\n\nOptimization hooks for expensive calculations and preventing unnecessary re-renders.\n\n## Custom Hooks\n\nCreate your own hooks to share stateful logic between components.",
-          duration: "12 min read"
-        }
-      ]
-    },
-    expert: {
-      lessons: [
-        {
-          title: "React Performance Optimization",
-          content: "# React Performance Optimization\n\n## React.memo\n\nPrevent unnecessary re-renders of components.\n\n## Virtualization\n\nRender only visible items in large lists.\n\n## Code Splitting\n\nSplit your code into smaller chunks for faster loading.",
-          duration: "15 min read"
-        }
-      ]
-    }
+  "Python HOME": {
+    lessons: [
+      {
+        title: "Welcome to Python Learning",
+        duration: "5 min read",
+        content: `Welcome to Python Learning
+
+Start your journey with Python, one of the most popular and versatile programming languages in the world.
+
+What You'll Learn
+- Complete Python fundamentals
+- Data structures and algorithms
+- Object-oriented programming
+- File handling and modules
+- Database connectivity
+- Real-world applications
+
+Why Choose Python?
+- Beginner-friendly syntax
+- Huge community support
+- Versatile applications
+- High-demand career skill
+- Extensive libraries
+
+Getting Started
+Choose any topic from the navigation to begin your Python learning journey. Each topic includes hands-on examples and exercises to reinforce your understanding.
+
+Learning Path Suggestions:
+1. Start with Python Intro
+2. Learn Python Syntax
+3. Master Variables and Data Types
+4. Practice with Control Flow
+5. Build projects with Functions and Classes`
+      }
+    ]
   },
-  "Python": {
-    beginner: {
-      lessons: [
-        {
-          title: "Introduction to Python & Setup",
-          duration: "8 min read",
-          content: `What is Python?
+  "Python Intro": {
+    lessons: [
+      {
+        title: "What is Python?",
+        duration: "8 min read",
+        content: `What is Python?
 
-Python is a high-level, interpreted programming language created by Guido van Rossum in 1991. It's designed with an emphasis on code readability and allows programmers to express concepts in fewer lines of code.
+Python is a popular programming language created by Guido van Rossum and released in 1991.
 
-Key Features of Python
+Python is used for:
+- Web development (server-side)
+- Software development
+- Mathematics
+- System scripting
+- Data analysis
+- Artificial intelligence
 
-Simple & Easy to Learn
-- Clean, readable syntax similar to English
-- No complex punctuation like braces
-- Uses indentation to define code blocks
+What can Python do?
+- Create web applications on servers
+- Build workflows alongside software
+- Connect to database systems
+- Read and modify files
+- Handle big data and complex mathematics
+- Rapid prototyping and production development
 
-Versatile Applications
-- Web Development (Django, Flask)
-- Data Science (Pandas, NumPy)
-- Machine Learning (TensorFlow, Scikit-learn)
-- Automation & Scripting
-- Desktop Applications
+Why Python?
+- Works on different platforms (Windows, Mac, Linux, Raspberry Pi)
+- Simple syntax similar to English language
+- Fewer lines of code than other programming languages
+- Runs on interpreter system - code executes immediately
+- Can be procedural, object-oriented, or functional
 
-Why Learn Python?
-- High Demand: One of most sought-after programming skills
-- Large Community: Millions of developers worldwide
-- Extensive Libraries: Pre-built solutions for almost everything
-- Beginner Friendly: Perfect first programming language
+Python Syntax Comparison
+- Designed for readability with English-like syntax
+- Uses new lines to complete commands (no semicolons)
+- Uses indentation instead of curly brackets for scope
+- Mathematical influence in design
 
-Installation & Setup
+Your First Python Program:
+print("Hello, World!")
 
-Step 1: Download Python
-- Visit python.org
-- Download latest version (Python 3.x)
-- Important: Check "Add Python to PATH" during installation
+This simple command will display "Hello, World!" on your screen.`
+      }
+    ]
+  },
+  "Python Get Started": {
+    lessons: [
+      {
+        title: "Installing and Setting Up Python",
+        duration: "10 min read",
+        content: `Installing Python
 
-Step 2: Verify Installation
-Open Command Prompt/Terminal and type:
+Python Installation Options:
+Many PCs and Macs already have Python installed. To check:
+
+On Windows: Open Command Prompt and type:
 python --version
 
-Step 3: Choose an IDE
-- IDLE: Comes with Python (good for beginners)
-- VS Code: Lightweight with Python extension
-- PyCharm: Full-featured Python IDE`
-        },
-        {
-          title: "Your First Python Program",
-          duration: "6 min read",
-          content: `Writing Your First Python Program
+On Mac/Linux: Open Terminal and type:
+python3 --version
 
-Let's start with the traditional "Hello, World!" program:
+If Python is not installed, download it for free from python.org
 
-print("Hello, World!")
-print("Welcome to Python Programming!")
+Python IDE Options
+You can write Python in several environments:
+- Text Editor (Notepad, TextEdit)
+- Integrated Development Environment (Thonny, PyCharm, Visual Studio Code)
+- Online editors (for testing)
 
-Output:
+Running Python Code
+Python can run in two ways:
+
+1. Interactive Mode
+Open command line and type "python" (or "python3"):
+>>> print("Hello, World!")
+
+2. Script Mode
+Create a file with .py extension:
+Create file: hello.py
+Content: print("Hello, World!")
+Run: python hello.py
+
+Setting Up Your Environment
+1. Download Python from python.org
+2. Install with default settings
+3. Verify installation with version check
+4. Choose your preferred code editor
+5. Create your first Python file
+6. Run your first program
+
+Best Practices
+- Use meaningful file names
+- Save files with .py extension
+- Keep projects organized in folders
+- Use version control (Git) for larger projects`
+      }
+    ]
+  },
+  "Python Syntax": {
+    lessons: [
+      {
+        title: "Python Syntax Fundamentals",
+        duration: "12 min read",
+        content: `Python Syntax Fundamentals
+
+Executing Python Code
+Python syntax can be executed directly in the command line:
+>>> print("Hello, World!")
 Hello, World!
-Welcome to Python Programming!
 
-Understanding the print() Function
+Or by creating Python files with .py extension:
+Save as: myfile.py
+Run: python myfile.py
 
-The print() function is used to display output on the screen. You can print:
-- Text (strings) in quotes
-- Numbers without quotes
-- Variables
-- Multiple items separated by commas
+Python Indentation
+Indentation is crucial in Python - it defines code blocks.
 
-Examples:
-print("Hello")
-print(42)
-print("Age:", 25)
+Correct indentation:
+if 5 > 2:
+    print("Five is greater than two!")
 
-Python Philosophy
+Incorrect indentation causes SyntaxError:
+if 5 > 2:
+print("Five is greater than two!")  # Error!
 
-Python has a philosophy called "The Zen of Python". Key principles:
-- Simple is better than complex
-- Readability counts
-- There should be one obvious way to do it
-- If the implementation is hard to explain, it's a bad idea
+Indentation Rules:
+- Use at least one space (4 spaces is standard)
+- Be consistent within the same block
+- All lines in a block must have same indentation
 
-Comments in Python
+Examples of proper indentation:
+if 5 > 2:
+    print("Five is greater than two!")
+    print("This is also indented")
 
-Comments help explain your code:
-- Single line comments start with #
-- Multi-line comments use triple quotes
+Python Variables
+Variables are created when you assign a value:
+x = 5
+y = "Hello, World!"
 
-Example:
-# This is a single line comment
-print("Hello")  # Comment at end of line
+No declaration command needed - Python creates variables automatically.
 
+Python Comments
+Comments start with # symbol:
+# This is a comment
+print("Hello, World!")  # Comment at end of line
+
+Multi-line comments:
 """
-This is a
-multi-line comment
+This is a multi-line comment
+spanning several lines
 """
 
-Running Python Programs
+Basic Syntax Rules:
+- Case sensitive (myVar and myvar are different)
+- No semicolons needed
+- Use indentation for code blocks
+- Comments improve code readability`
+      }
+    ]
+  },
+  "Python Comments": {
+    lessons: [
+      {
+        title: "Writing Comments in Python",
+        duration: "6 min read",
+        content: `Python Comments
 
-You can run Python code in several ways:
-1. Interactive mode: Type python in terminal
-2. Script mode: Save code in .py file and run it
-3. IDE: Use your chosen development environment`
-        },
-        {
-          title: "Variables and Basic Data Types",
-          duration: "10 min read",
-          content: `Variables in Python
+Comments are used to explain code and make it more readable. Python ignores comments when executing code.
 
-Variables are containers for storing data. Python variables are created when you assign a value to them.
+Single Line Comments
+Start with # symbol:
+# This is a comment
+print("Hello, World!")
+
+Comments can be at the end of lines:
+print("Hello, World!")  # This is also a comment
+
+Multi-Line Comments
+Python doesn't have specific multi-line comment syntax, but you can use:
+
+Option 1 - Multiple # symbols:
+# This is a comment
+# written in
+# more than just one line
+
+Option 2 - Triple quotes (not truly comments, but often used as such):
+"""
+This is a comment
+written in
+more than just one line
+"""
+
+Best Practices for Comments:
+- Explain WHY, not WHAT
+- Keep comments updated with code changes
+- Avoid obvious comments
+- Use comments to explain complex logic
+
+Good comment examples:
+# Calculate compound interest using formula A = P(1 + r/n)^(nt)
+amount = principal * (1 + rate/compounds) ** (compounds * time)
+
+# TODO: Add input validation for negative numbers
+user_input = input("Enter a number: ")
+
+Comment Guidelines:
+- Write comments before writing code
+- Use clear, concise language
+- Update comments when code changes
+- Remove outdated comments`
+      }
+    ]
+  },
+  "Python Variables": {
+    lessons: [
+      {
+        title: "Working with Variables",
+        duration: "10 min read",
+        content: `Python Variables
+
+Variables are containers for storing data values. Python has no command for declaring variables.
 
 Creating Variables:
-name = "John"
-age = 25
-height = 5.9
-is_student = True
-
-Variable Naming Rules:
-- Must start with a letter or underscore
-- Can contain letters, numbers, and underscores
-- Case-sensitive (name and Name are different)
-- Cannot use Python keywords
-
-Good variable names:
-first_name = "Alice"
-user_age = 30
-total_score = 95
-
-Basic Data Types
-
-Python has several built-in data types:
-
-1. Strings (text)
-message = "Hello Python"
-name = 'Alice'
-
-2. Integers (whole numbers)
-age = 25
-score = 100
-
-3. Floats (decimal numbers)
-height = 5.9
-price = 19.99
-
-4. Booleans (True/False)
-is_active = True
-is_complete = False
-
-Checking Data Types:
-print(type(name))     # <class 'str'>
-print(type(age))      # <class 'int'>
-print(type(height))   # <class 'float'>
-print(type(is_active)) # <class 'bool'>
-
-String Operations
-
-You can work with strings in many ways:
-
-Concatenation (joining):
-first_name = "John"
-last_name = "Doe"
-full_name = first_name + " " + last_name
-
-String formatting:
-name = "Alice"
-age = 25
-message = f"My name is {name} and I am {age} years old"
-
-Common string methods:
-text = "Hello World"
-print(text.upper())    # HELLO WORLD
-print(text.lower())    # hello world
-print(text.replace("Hello", "Hi"))  # Hi World`
-        },
-        {
-          title: "Basic Operators and Input",
-          duration: "8 min read",
-          content: `Python Operators
-
-Arithmetic Operators:
-+ Addition
-- Subtraction
-* Multiplication
-/ Division
-// Floor division (rounds down)
-% Modulus (remainder)
-** Exponentiation (power)
-
-Examples:
-a = 10
-b = 3
-
-print(a + b)   # 13
-print(a - b)   # 7
-print(a * b)   # 30
-print(a / b)   # 3.333...
-print(a // b)  # 3
-print(a % b)   # 1
-print(a ** b)  # 1000
-
-Comparison Operators:
-== Equal to
-!= Not equal to
-> Greater than
-< Less than
->= Greater than or equal to
-<= Less than or equal to
-
-Examples:
-age = 18
-print(age >= 18)  # True
-print(age == 21)  # False
-
-Getting User Input
-
-The input() function gets user input as a string:
-
-name = input("Enter your name: ")
-print("Hello, " + name)
-
-Converting input to numbers:
-age = int(input("Enter your age: "))
-height = float(input("Enter your height: "))
-
-Simple Calculator Example:
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
-result = num1 + num2
-print(f"The sum is: {result}")
-
-Indentation in Python
-
-Python uses indentation to group code:
-if age >= 18:
-    print("You are an adult")
-    print("You can vote")
-else:
-    print("You are a minor")
-    print("You cannot vote yet")
-
-Important: Use 4 spaces for indentation (most common)`
-        }
-      ]
-    },
-    intermediate: {
-      lessons: [
-        {
-          title: "Data Structures and Control Flow",
-          duration: "15 min read",
-          content: `Python Data Structures
-
-Lists - Ordered, mutable collections
-fruits = ["apple", "banana", "orange"]
-fruits.append("grape")
-print(fruits[0])  # apple
-
-Dictionaries - Key-value pairs
-person = {
-    "name": "Alice",
-    "age": 30,
-    "city": "New York"
-}
-print(person["name"])  # Alice
-
-Tuples - Ordered, immutable collections
-coordinates = (10, 20)
-x, y = coordinates  # unpacking
-
-Sets - Unordered, unique elements
-numbers = {1, 2, 3, 4, 5}
-numbers.add(6)
-
-Control Flow Statements
-
-If-elif-else statements:
-score = 85
-if score >= 90:
-    grade = "A"
-elif score >= 80:
-    grade = "B"
-elif score >= 70:
-    grade = "C"
-else:
-    grade = "F"
-
-For loops:
-for fruit in fruits:
-    print(fruit)
-
-for i in range(5):
-    print(i)  # prints 0, 1, 2, 3, 4
-
-While loops:
-count = 0
-while count < 5:
-    print(count)
-    count += 1
-
-List Comprehensions
-
-Simple list comprehension:
-squares = [x**2 for x in range(10)]
-
-With condition:
-even_squares = [x**2 for x in range(10) if x % 2 == 0]
-
-Functions
-
-Defining functions:
-def greet(name):
-    return f"Hello, {name}!"
-
-def calculate_area(length, width):
-    return length * width
-
-result = greet("Python")
-area = calculate_area(5, 3)
-
-Error Handling
-
-Try-except blocks:
-try:
-    number = int(input("Enter a number: "))
-    result = 10 / number
-    print(result)
-except ValueError:
-    print("Please enter a valid number")
-except ZeroDivisionError:
-    print("Cannot divide by zero")`
-        }
-      ]
-    },
-    expert: {
-      lessons: [
-        {
-          title: "Advanced Python Concepts",
-          duration: "20 min read",
-          content: `Object-Oriented Programming
-
-Classes and Objects:
-class Car:
-    def __init__(self, brand, model):
-        self.brand = brand
-        self.model = model
-        self.speed = 0
-    
-    def accelerate(self, amount):
-        self.speed += amount
-    
-    def brake(self, amount):
-        self.speed = max(0, self.speed - amount)
-
-my_car = Car("Toyota", "Camry")
-my_car.accelerate(50)
-
-Inheritance:
-class ElectricCar(Car):
-    def __init__(self, brand, model, battery_capacity):
-        super().__init__(brand, model)
-        self.battery_capacity = battery_capacity
-    
-    def charge(self, amount):
-        print(f"Charging {amount} kWh")
-
-Decorators
-
-Function decorators:
-def timer(func):
-    import time
-    def wrapper(*args, **kwargs):
-        start = time.time()
-        result = func(*args, **kwargs)
-        end = time.time()
-        print(f"Function took {end - start} seconds")
-        return result
-    return wrapper
-
-@timer
-def slow_function():
-    import time
-    time.sleep(1)
-    return "Done"
-
-Generators
-
-Generator functions:
-def fibonacci():
-    a, b = 0, 1
-    while True:
-        yield a
-        a, b = b, a + b
-
-# Usage
-fib = fibonacci()
-for _ in range(10):
-    print(next(fib))
-
-Generator expressions:
-squares = (x**2 for x in range(1000000))
-
-Context Managers
-
-Using with statements:
-with open("file.txt", "r") as file:
-    content = file.read()
-    # file automatically closed
-
-Custom context manager:
-class DatabaseConnection:
-    def __enter__(self):
-        print("Connecting to database")
-        return self
-    
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Closing database connection")
-
-Lambda Functions and Functional Programming
-
-Lambda functions:
-square = lambda x: x**2
-add = lambda x, y: x + y
-
-Map, filter, reduce:
-numbers = [1, 2, 3, 4, 5]
-squared = list(map(lambda x: x**2, numbers))
-evens = list(filter(lambda x: x % 2 == 0, numbers))
-
-from functools import reduce
-sum_all = reduce(lambda x, y: x + y, numbers)
-
-Advanced Data Structures
-
-Collections module:
-from collections import defaultdict, Counter, deque
-
-# defaultdict
-dd = defaultdict(list)
-dd["key"].append("value")
-
-# Counter
-counter = Counter("hello world")
-print(counter)  # Counter({'l': 3, 'o': 2, ...})
-
-# deque
-queue = deque([1, 2, 3])
-queue.appendleft(0)
-queue.append(4)`
-        }
-      ]
-    }
+x = 5
+y = "John"
+print(x)
+print(y)
+
+Variables can change type after assignment:
+x = 4       # x is of type int
+x = "Sally" # x is now of type str
+print(x)
+
+Variable Names Rules:
+- Must start with letter or underscore
+- Cannot start with number
+- Can only contain alphanumeric characters and underscores
+- Case-sensitive (age, Age, AGE are different)
+
+Valid variable names:
+myvar = "John"
+my_var = "John"
+_my_var = "John"
+myVar = "John"
+MYVAR = "John"
+myvar2 = "John"
+
+Invalid variable names:
+2myvar = "John"    # Cannot start with number
+my-var = "John"    # Cannot use hyphen
+my var = "John"    # Cannot use spaces
+
+Multiple Variables Assignment:
+x, y, z = "Orange", "Banana", "Cherry"
+
+Same value to multiple variables:
+x = y = z = "Orange"
+
+Variable Types:
+Python automatically determines the type:
+x = 1      # int
+y = 2.8    # float
+z = "John" # str
+
+Check variable type:
+print(type(x))
+print(type(y))
+print(type(z))
+
+Global vs Local Variables:
+x = "global"  # Global variable
+
+def myfunc():
+    x = "local"  # Local variable
+    print("Inside function: " + x)
+
+myfunc()
+print("Outside function: " + x)`
+      }
+    ]
+  },
+  "React Fundamentals": {
+    lessons: [
+      {
+        title: "Understanding JSX and Components",
+        content: "Understanding JSX and Components\n\nJSX (JavaScript XML) is a syntax extension for JavaScript that lets you write HTML-like code in your React components.\n\nWhat is JSX?\n\nJSX allows you to describe what your UI should look like by combining JavaScript with HTML-like syntax.\n\nKey Concepts:\n\n1. Components are Functions: In modern React, components are just JavaScript functions that return JSX\n2. Props: Components can receive data through props (properties)\n3. State: Components can manage their own internal state\n4. Virtual DOM: React uses a virtual representation of the DOM for efficient updates\n\nBest Practices:\n\n- Always return a single parent element or use React Fragments\n- Use camelCase for HTML attributes (className instead of class)\n- Close all tags, even self-closing ones\n- Keep components small and focused on a single responsibility",
+        duration: "8 min read"
+      }
+    ]
   }
 };
 
@@ -530,27 +372,7 @@ export default function LessonViewer({ session, onLessonComplete, onStartQuiz, o
     );
   }
 
-  const levelContent = currentTopic[session.level];
-  
-  if (!levelContent) {
-    return (
-      <div className="min-h-screen bg-gradient-surface p-4">
-        <Card className="shadow-card">
-          <CardContent className="p-6 text-center">
-            <h2 className="text-xl font-semibold mb-4">Level Not Available</h2>
-            <p className="text-muted-foreground mb-4">
-              The {session.level} level for "{session.topic}" is not available yet.
-            </p>
-            <Button onClick={onBackToDashboard} className="mt-4">
-              Back to Dashboard
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-  const currentLesson = levelContent.lessons[session.current_lesson - 1];
+  const currentLesson = currentTopic.lessons[session.current_lesson - 1];
   
   if (!currentLesson) {
     return (
@@ -576,8 +398,7 @@ export default function LessonViewer({ session, onLessonComplete, onStartQuiz, o
             <div>
               <h1 className="text-3xl font-bold text-foreground">{session.topic}</h1>
               <div className="flex items-center gap-4 mt-2">
-                <span className="text-primary font-medium">{session.level.charAt(0).toUpperCase() + session.level.slice(1)} Level</span>
-                <span className="text-muted-foreground">Lesson {session.current_lesson} of {levelContent.lessons.length}</span>
+                <span className="text-muted-foreground">Lesson {session.current_lesson} of {currentTopic.lessons.length}</span>
               </div>
             </div>
           </div>
@@ -620,14 +441,14 @@ export default function LessonViewer({ session, onLessonComplete, onStartQuiz, o
           <Button 
             className="flex-1"
             onClick={() => {
-              if (session.current_lesson < levelContent.lessons.length) {
+              if (session.current_lesson < currentTopic.lessons.length) {
                 onLessonComplete(session.current_lesson + 1);
               } else {
                 onStartQuiz();
               }
             }}
           >
-            {session.current_lesson >= levelContent.lessons.length ? "Start Quiz" : "Next Lesson"}
+            {session.current_lesson >= currentTopic.lessons.length ? "Start Quiz" : "Next Lesson"}
             <ChevronRight className="h-4 w-4 ml-2" />
           </Button>
         </div>
