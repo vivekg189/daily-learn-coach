@@ -352,17 +352,51 @@ print("Outside function: " + x)`
 };
 
 export default function LessonViewer({ session, onLessonComplete, onStartQuiz, onBackToDashboard }: LessonViewerProps) {
-  const currentTopic = lessonContent[session.topic];
+  let currentTopic = lessonContent[session.topic];
+  
+  // Handle generic "Python" topic by redirecting to "Python HOME"
+  if (!currentTopic && session.topic.toLowerCase() === "python") {
+    currentTopic = lessonContent["Python HOME"];
+  }
   
   if (!currentTopic) {
+    // Check if it's a Python-related topic that doesn't exist
+    const availablePythonTopics = Object.keys(lessonContent).filter(topic => 
+      topic.toLowerCase().includes('python')
+    );
+    
     return (
       <div className="min-h-screen bg-gradient-surface p-4">
         <Card className="shadow-card">
           <CardContent className="p-6 text-center">
-            <h2 className="text-xl font-semibold mb-4">Topic Not Found</h2>
+            <h2 className="text-xl font-semibold mb-4">Topic Not Available</h2>
             <p className="text-muted-foreground mb-4">
               The topic "{session.topic}" is not available yet.
             </p>
+            
+            {availablePythonTopics.length > 0 && (
+              <div className="mb-4">
+                <p className="text-sm font-medium mb-3">Available Python topics:</p>
+                <div className="grid grid-cols-2 gap-2 max-w-md mx-auto">
+                  {availablePythonTopics.map(topic => (
+                    <Button
+                      key={topic}
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        // Update the session topic and reload
+                        session.topic = topic;
+                        window.location.reload();
+                      }}
+                      className="text-xs"
+                    >
+                      {topic}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             <Button onClick={onBackToDashboard} className="mt-4">
               Back to Dashboard
             </Button>
