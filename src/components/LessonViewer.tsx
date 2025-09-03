@@ -62,7 +62,7 @@ const lessonContent: Record<string, TopicContent> = {
       lessons: [
         {
           title: "Introduction to Python & Setup",
-          duration: "10 min read",
+          duration: "8 min read",
           content: `What is Python?
 
 Python is a high-level, interpreted programming language created by Guido van Rossum in 1991. It's designed with an emphasis on code readability and allows programmers to express concepts in fewer lines of code.
@@ -101,9 +101,14 @@ python --version
 Step 3: Choose an IDE
 - IDLE: Comes with Python (good for beginners)
 - VS Code: Lightweight with Python extension
-- PyCharm: Full-featured Python IDE
+- PyCharm: Full-featured Python IDE`
+        },
+        {
+          title: "Your First Python Program",
+          duration: "6 min read",
+          content: `Writing Your First Python Program
 
-Your First Python Program
+Let's start with the traditional "Hello, World!" program:
 
 print("Hello, World!")
 print("Welcome to Python Programming!")
@@ -112,25 +117,186 @@ Output:
 Hello, World!
 Welcome to Python Programming!
 
+Understanding the print() Function
+
+The print() function is used to display output on the screen. You can print:
+- Text (strings) in quotes
+- Numbers without quotes
+- Variables
+- Multiple items separated by commas
+
+Examples:
+print("Hello")
+print(42)
+print("Age:", 25)
+
 Python Philosophy
 
-Key principles:
+Python has a philosophy called "The Zen of Python". Key principles:
 - Simple is better than complex
 - Readability counts
 - There should be one obvious way to do it
+- If the implementation is hard to explain, it's a bad idea
 
-Basic Python Syntax
+Comments in Python
 
-Variables in Python:
+Comments help explain your code:
+- Single line comments start with #
+- Multi-line comments use triple quotes
+
+Example:
+# This is a single line comment
+print("Hello")  # Comment at end of line
+
+"""
+This is a
+multi-line comment
+"""
+
+Running Python Programs
+
+You can run Python code in several ways:
+1. Interactive mode: Type python in terminal
+2. Script mode: Save code in .py file and run it
+3. IDE: Use your chosen development environment`
+        },
+        {
+          title: "Variables and Basic Data Types",
+          duration: "10 min read",
+          content: `Variables in Python
+
+Variables are containers for storing data. Python variables are created when you assign a value to them.
+
+Creating Variables:
 name = "John"
 age = 25
 height = 5.9
+is_student = True
+
+Variable Naming Rules:
+- Must start with a letter or underscore
+- Can contain letters, numbers, and underscores
+- Case-sensitive (name and Name are different)
+- Cannot use Python keywords
+
+Good variable names:
+first_name = "Alice"
+user_age = 30
+total_score = 95
+
+Basic Data Types
+
+Python has several built-in data types:
+
+1. Strings (text)
+message = "Hello Python"
+name = 'Alice'
+
+2. Integers (whole numbers)
+age = 25
+score = 100
+
+3. Floats (decimal numbers)
+height = 5.9
+price = 19.99
+
+4. Booleans (True/False)
+is_active = True
+is_complete = False
+
+Checking Data Types:
+print(type(name))     # <class 'str'>
+print(type(age))      # <class 'int'>
+print(type(height))   # <class 'float'>
+print(type(is_active)) # <class 'bool'>
+
+String Operations
+
+You can work with strings in many ways:
+
+Concatenation (joining):
+first_name = "John"
+last_name = "Doe"
+full_name = first_name + " " + last_name
+
+String formatting:
+name = "Alice"
+age = 25
+message = f"My name is {name} and I am {age} years old"
+
+Common string methods:
+text = "Hello World"
+print(text.upper())    # HELLO WORLD
+print(text.lower())    # hello world
+print(text.replace("Hello", "Hi"))  # Hi World`
+        },
+        {
+          title: "Basic Operators and Input",
+          duration: "8 min read",
+          content: `Python Operators
+
+Arithmetic Operators:
++ Addition
+- Subtraction
+* Multiplication
+/ Division
+// Floor division (rounds down)
+% Modulus (remainder)
+** Exponentiation (power)
+
+Examples:
+a = 10
+b = 3
+
+print(a + b)   # 13
+print(a - b)   # 7
+print(a * b)   # 30
+print(a / b)   # 3.333...
+print(a // b)  # 3
+print(a % b)   # 1
+print(a ** b)  # 1000
+
+Comparison Operators:
+== Equal to
+!= Not equal to
+> Greater than
+< Less than
+>= Greater than or equal to
+<= Less than or equal to
+
+Examples:
+age = 18
+print(age >= 18)  # True
+print(age == 21)  # False
+
+Getting User Input
+
+The input() function gets user input as a string:
+
+name = input("Enter your name: ")
+print("Hello, " + name)
+
+Converting input to numbers:
+age = int(input("Enter your age: "))
+height = float(input("Enter your height: "))
+
+Simple Calculator Example:
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+result = num1 + num2
+print(f"The sum is: {result}")
+
+Indentation in Python
 
 Python uses indentation to group code:
-if age > 18:
+if age >= 18:
     print("You are an adult")
+    print("You can vote")
 else:
-    print("You are a minor")`
+    print("You are a minor")
+    print("You cannot vote yet")
+
+Important: Use 4 spaces for indentation (most common)`
         }
       ]
     },
