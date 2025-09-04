@@ -43,113 +43,170 @@ export function LessonContent({ course, topic, onBackToTopics }: LessonContentPr
     
     const mockContents = {
       'python_home': `
-        <h1>Python Tutorial</h1>
-        <p>Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.</p>
+        <h1>Welcome to Python Programming!</h1>
+        <p>Python is a powerful yet easy-to-learn programming language. Think of it like learning to speak a new language, but instead of talking to people, you're talking to computers!</p>
         
         <h2>What is Python?</h2>
+        <p>Python is a programming language that reads almost like English. Here's what makes it special:</p>
         <ul>
-          <li>Python is a high-level, interpreted programming language</li>
-          <li>Python has a simple syntax similar to the English language</li>
-          <li>Python can be treated in a procedural way, an object-oriented way or a functional way</li>
+          <li><strong>Easy to read:</strong> Python code looks clean and simple</li>
+          <li><strong>Beginner-friendly:</strong> Perfect for people who are new to programming</li>
+          <li><strong>Powerful:</strong> Used by companies like Google, Netflix, and Instagram</li>
+          <li><strong>Versatile:</strong> You can build websites, games, apps, and even control robots!</li>
         </ul>
 
-        <h2>What can Python do?</h2>
+        <h2>What can you build with Python?</h2>
         <ul>
-          <li>Python can be used on a server to create web applications</li>
-          <li>Python can be used alongside software to create workflows</li>
-          <li>Python can connect to database systems</li>
-          <li>Python can handle big data and perform complex mathematics</li>
-          <li>Python can be used for rapid prototyping, or for production-ready software development</li>
+          <li><strong>Websites:</strong> Like Instagram and Pinterest</li>
+          <li><strong>Games:</strong> Simple games or complex simulations</li>
+          <li><strong>Mobile Apps:</strong> Apps for your phone</li>
+          <li><strong>Data Analysis:</strong> Understand patterns in large amounts of data</li>
+          <li><strong>Automation:</strong> Make your computer do repetitive tasks for you</li>
         </ul>
 
-        <h2>Why Python?</h2>
+        <h2>Why choose Python?</h2>
         <ul>
-          <li>Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc)</li>
-          <li>Python has a simple syntax similar to the English language</li>
-          <li>Python has syntax that allows developers to write programs with fewer lines than some other programming languages</li>
-          <li>Python runs on an interpreter system, meaning that code can be executed as soon as it is written</li>
+          <li><strong>Simple syntax:</strong> Looks like English sentences</li>
+          <li><strong>Large community:</strong> Millions of people ready to help you learn</li>
+          <li><strong>Free:</strong> Completely free to download and use</li>
+          <li><strong>Cross-platform:</strong> Works on Windows, Mac, and Linux</li>
         </ul>
+
+        <div style="background-color: #f0f8ff; padding: 15px; border-left: 4px solid #0066cc; margin: 20px 0;">
+          <h3>💡 Fun Fact</h3>
+          <p>Python was named after the British comedy group "Monty Python's Flying Circus" - not the snake!</p>
+        </div>
       `,
       'python_intro': `
-        <h1>Python Introduction</h1>
-        <p>Python is a programming language that lets you work quickly and integrate systems more effectively.</p>
+        <h1>Getting to Know Python</h1>
+        <p>Let's dive deeper into what makes Python such an amazing programming language for beginners!</p>
         
-        <h2>Python Features</h2>
-        <ul>
-          <li><strong>Easy to Learn:</strong> Python has a simple syntax that mimics natural language</li>
-          <li><strong>Interpreted:</strong> Python code is executed line by line</li>
-          <li><strong>Object-Oriented:</strong> Everything in Python is an object</li>
-          <li><strong>High-level:</strong> Python handles memory management automatically</li>
-          <li><strong>Cross-platform:</strong> Python runs on Windows, macOS, and Linux</li>
-        </ul>
+        <h2>Python's Special Features</h2>
+        
+        <h3>1. Easy to Learn 📚</h3>
+        <p>Python uses simple words and symbols. Compare these two ways to say "Hello":</p>
+        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
+          <strong>In Python:</strong><br>
+          <code>print("Hello, World!")</code><br><br>
+          <strong>In some other languages:</strong><br>
+          <code>System.out.println("Hello, World!");</code>
+        </div>
+        <p>See how Python is shorter and clearer?</p>
 
-        <h2>Python Versions</h2>
-        <p>There are two major Python versions:</p>
-        <ul>
-          <li><strong>Python 2:</strong> Legacy version (end of life January 1, 2020)</li>
-          <li><strong>Python 3:</strong> Current version with active development</li>
-        </ul>
+        <h3>2. Interpreted Language 🔄</h3>
+        <p>This means you can write code and see results immediately - no waiting!</p>
+        
+        <h3>3. Object-Oriented 🎯</h3>
+        <p>Think of this like organizing your toys in boxes. Python helps you organize your code neatly.</p>
+        
+        <h3>4. High-level Language 🚀</h3>
+        <p>Python handles the complicated computer stuff for you, so you can focus on solving problems.</p>
 
-        <p><strong>Note:</strong> This tutorial focuses on Python 3, which is the recommended version.</p>
+        <h2>Python Versions: Which One to Use?</h2>
+        <p>There are two main versions:</p>
+        <ul>
+          <li><strong>Python 2:</strong> The older version (like an old phone - still works but not recommended)</li>
+          <li><strong>Python 3:</strong> The current version (like the latest smartphone - this is what you want!)</li>
+        </ul>
+        
+        <div style="background-color: #e8f5e8; padding: 15px; border-left: 4px solid #4caf50; margin: 20px 0;">
+          <h3>✅ Recommendation</h3>
+          <p>Always use Python 3! It's actively updated and has all the latest features.</p>
+        </div>
       `,
       'python_get_started': `
-        <h1>Python Get Started</h1>
+        <h1>Let's Start Your Python Journey!</h1>
         
-        <h2>Python Install</h2>
-        <p>Many PCs and Macs will have Python already installed. To check if you have Python installed, open a command line and type:</p>
-        <pre><code>python --version</code></pre>
+        <h2>Step 1: Check if Python is Already Installed</h2>
+        <p>Many computers already have Python installed. Let's check yours!</p>
         
-        <h2>Python Installation</h2>
-        <p>If you don't have Python installed, you can download it for free from: <a href="https://www.python.org/" target="_blank">https://www.python.org/</a></p>
+        <h3>On Windows:</h3>
+        <ol>
+          <li>Press <strong>Windows key + R</strong></li>
+          <li>Type <code>cmd</code> and press Enter</li>
+          <li>Type <code>python --version</code> and press Enter</li>
+        </ol>
         
-        <h2>Python Quickstart</h2>
-        <p>Python is an interpreted programming language, this means that as a developer you write Python (.py) files in a text editor and then put those files into the Python interpreter to be executed.</p>
+        <h3>On Mac:</h3>
+        <ol>
+          <li>Press <strong>Cmd + Space</strong></li>
+          <li>Type <code>Terminal</code> and press Enter</li>
+          <li>Type <code>python3 --version</code> and press Enter</li>
+        </ol>
         
-        <p>The way to run a Python file is like this on the command line:</p>
-        <pre><code>python helloworld.py</code></pre>
+        <div style="background-color: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+          <h3>⚠️ What You'll See</h3>
+          <p>If Python is installed, you'll see something like: <code>Python 3.9.7</code><br>
+          If not, you'll get an error message.</p>
+        </div>
+
+        <h2>Step 2: Install Python (if needed)</h2>
+        <p>If Python isn't installed, don't worry! Here's how to get it:</p>
+        <ol>
+          <li>Go to <strong>python.org</strong></li>
+          <li>Click the big yellow "Download Python" button</li>
+          <li>Run the downloaded file</li>
+          <li><strong>Important:</strong> Check "Add Python to PATH" during installation!</li>
+        </ol>
+
+        <h2>Step 3: Your First Python Program!</h2>
+        <p>Let's write your very first Python program. It's a tradition to start with "Hello, World!"</p>
         
-        <p>Where "helloworld.py" is the name of your Python file.</p>
+        <h3>Method 1: Using a Text Editor</h3>
+        <ol>
+          <li>Open Notepad (Windows) or TextEdit (Mac)</li>
+          <li>Type exactly: <code>print("Hello, World!")</code></li>
+          <li>Save the file as <code>hello.py</code></li>
+          <li>Open command prompt/terminal in the same folder</li>
+          <li>Type: <code>python hello.py</code></li>
+        </ol>
         
-        <h2>Your First Python Program</h2>
-        <p>Let's write our first Python file, called helloworld.py, which can be done in any text editor:</p>
-        <pre><code>print("Hello, World!")</code></pre>
-        
-        <p>Simple as that. Save your file. Open your command line, navigate to the directory where you saved your file, and run:</p>
-        <pre><code>python helloworld.py</code></pre>
-        
-        <p>The output should read: Hello, World!</p>
+        <h3>Method 2: Using Python Interactive Mode</h3>
+        <ol>
+          <li>Open command prompt/terminal</li>
+          <li>Type <code>python</code> and press Enter</li>
+          <li>You'll see <code>>>></code> - this means Python is ready!</li>
+          <li>Type: <code>print("Hello, World!")</code></li>
+          <li>Press Enter and watch the magic happen!</li>
+        </ol>
+
+        <div style="background-color: #e8f5e8; padding: 15px; border-left: 4px solid #4caf50; margin: 20px 0;">
+          <h3>🎉 Congratulations!</h3>
+          <p>If you see "Hello, World!" on your screen, you've just run your first Python program! You're officially a programmer now!</p>
+        </div>
+
+        <h2>What Just Happened?</h2>
+        <p>Let's break down your first program:</p>
+        <ul>
+          <li><strong>print()</strong> - This is a function that displays text on the screen</li>
+          <li><strong>"Hello, World!"</strong> - This is called a string (text wrapped in quotes)</li>
+          <li>The parentheses () tell Python to run the print function</li>
+        </ul>
       `
     };
 
     return mockContents[topicKey] || `
       <h1>${topic}</h1>
-      <p>Content for ${topic} is being prepared. This topic will cover important concepts related to ${topic.toLowerCase()}.</p>
+      <p>Welcome to the ${topic} lesson! This topic will help you understand important programming concepts.</p>
       
-      <h2>What you'll learn:</h2>
+      <h2>What You'll Learn</h2>
       <ul>
-        <li>Core concepts of ${topic}</li>
-        <li>Practical examples and use cases</li>
-        <li>Best practices and common patterns</li>
-        <li>Hands-on exercises</li>
+        <li><strong>Core concepts:</strong> The fundamental ideas behind ${topic.toLowerCase()}</li>
+        <li><strong>Practical examples:</strong> Real-world code you can try yourself</li>
+        <li><strong>Step-by-step guidance:</strong> Clear instructions for beginners</li>
+        <li><strong>Hands-on practice:</strong> Exercises to reinforce your learning</li>
       </ul>
       
-      <p><em>Note: This content would typically be fetched from educational platforms like W3Schools or GeeksforGeeks.</em></p>
+      <h2>Getting Started</h2>
+      <p>This lesson is designed for beginners, so don't worry if you're new to programming. We'll explain everything clearly with plenty of examples!</p>
+      
+      <div style="background-color: #e8f5e8; padding: 15px; border-left: 4px solid #4caf50; margin: 20px 0;">
+        <h3>💡 Tip for Success</h3>
+        <p>Take your time and practice each concept. Programming is like learning to ride a bike - it takes practice, but once you get it, it becomes natural!</p>
+      </div>
     `;
   };
 
-  const getExternalLinks = () => {
-    const topicSlug = topic.toLowerCase().replace(/\s+/g, '_').replace(/\./g, '');
-    return [
-      {
-        name: 'W3Schools',
-        url: `https://www.w3schools.com/python/${topicSlug}.asp`
-      },
-      {
-        name: 'GeeksforGeeks', 
-        url: `https://www.geeksforgeeks.org/python-${topicSlug}/`
-      }
-    ];
-  };
 
   if (loading) {
     return (
@@ -193,27 +250,6 @@ export function LessonContent({ course, topic, onBackToTopics }: LessonContentPr
             <div>
               <h1 className="text-3xl font-bold mb-2">{topic}</h1>
               <p className="text-muted-foreground capitalize">{course} Course</p>
-            </div>
-            
-            <div className="flex gap-2">
-              {getExternalLinks().map((link) => (
-                <Button
-                  key={link.name}
-                  variant="outline"
-                  size="sm"
-                  asChild
-                >
-                  <a 
-                    href={link.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    {link.name}
-                  </a>
-                </Button>
-              ))}
             </div>
           </div>
         </div>
